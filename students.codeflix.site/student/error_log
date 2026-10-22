@@ -1,0 +1,209 @@
+[01-Feb-2026 17:13:22 Asia/Manila] PHP Warning:  require(/home/code2025/students.codeflix.site/students/config/auth_guard.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/students/student_dashboard.php on line 2
+[01-Feb-2026 17:13:22 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required '/home/code2025/students.codeflix.site/students/config/auth_guard.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/students/student_dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/students/student_dashboard.php on line 2
+[01-Feb-2026 17:16:11 Asia/Manila] PHP Warning:  require(/home/code2025/students.codeflix.site/students/config/auth_guard.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/students/dashboard.php on line 2
+[01-Feb-2026 17:16:11 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required '/home/code2025/students.codeflix.site/students/config/auth_guard.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/students/dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/students/dashboard.php on line 2
+[01-Feb-2026 17:42:54 Asia/Manila] PHP Warning:  require(/home/code2025/students.codeflix.site/student/config/auth_guard.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/student/dashboard.php on line 2
+[01-Feb-2026 17:42:54 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required '/home/code2025/students.codeflix.site/student/config/auth_guard.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/student/dashboard.php:2
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/student/dashboard.php on line 2
+[02-Mar-2026 21:51:29 Asia/Manila] PHP Warning:  require_once(db_connect.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:51:29 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required 'db_connect.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/student/profile.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:51:49 Asia/Manila] PHP Warning:  require_once(db_connect.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:51:49 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required 'db_connect.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/student/profile.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:51:52 Asia/Manila] PHP Warning:  require_once(db_connect.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:51:52 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required 'db_connect.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/student/profile.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:51:53 Asia/Manila] PHP Warning:  require_once(db_connect.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:51:53 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required 'db_connect.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/student/profile.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:51:58 Asia/Manila] PHP Warning:  require_once(db_connect.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:51:58 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required 'db_connect.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/student/profile.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:53:00 Asia/Manila] PHP Warning:  require_once(db_connect.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:53:00 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required 'db_connect.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/student/profile.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:53:38 Asia/Manila] PHP Warning:  require_once(db_connect.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:53:38 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required 'db_connect.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/student/profile.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:53:39 Asia/Manila] PHP Warning:  require_once(db_connect.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:53:39 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required 'db_connect.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/student/profile.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:53:40 Asia/Manila] PHP Warning:  require_once(db_connect.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:53:40 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required 'db_connect.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/student/profile.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:53:51 Asia/Manila] PHP Warning:  require_once(db_connect.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:53:51 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required 'db_connect.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/student/profile.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:54:54 Asia/Manila] PHP Warning:  require_once(db_connect.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:54:54 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required 'db_connect.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/student/profile.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:57:24 Asia/Manila] PHP Warning:  require_once(db_connect.php): Failed to open stream: No such file or directory in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[02-Mar-2026 21:57:24 Asia/Manila] PHP Fatal error:  Uncaught Error: Failed opening required 'db_connect.php' (include_path='.:/opt/cpanel/ea-php83/root/usr/share/pear') in /home/code2025/students.codeflix.site/student/profile.php:3
+Stack trace:
+#0 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 3
+[07-Mar-2026 15:45:04 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'full_name' in 'field list' in /home/code2025/students.codeflix.site/student/profile.php:23
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/profile.php(23): mysqli->prepare('SELECT full_nam...')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 23
+[07-Mar-2026 15:45:06 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'full_name' in 'field list' in /home/code2025/students.codeflix.site/student/profile.php:23
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/profile.php(23): mysqli->prepare('SELECT full_nam...')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 23
+[07-Mar-2026 15:45:08 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'full_name' in 'field list' in /home/code2025/students.codeflix.site/student/profile.php:23
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/profile.php(23): mysqli->prepare('SELECT full_nam...')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 23
+[07-Mar-2026 15:45:25 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'full_name' in 'field list' in /home/code2025/students.codeflix.site/student/profile.php:23
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/profile.php(23): mysqli->prepare('SELECT full_nam...')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 23
+[07-Mar-2026 15:45:27 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'full_name' in 'field list' in /home/code2025/students.codeflix.site/student/profile.php:23
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/profile.php(23): mysqli->prepare('SELECT full_nam...')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 23
+[07-Mar-2026 15:47:51 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'full_name' in 'field list' in /home/code2025/students.codeflix.site/student/profile.php:42
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/profile.php(42): mysqli->prepare('SELECT full_nam...')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/profile.php on line 42
+[07-Mar-2026 18:14:03 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'm.subject' in 'field list' in /home/code2025/students.codeflix.site/student/messages.php:67
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/messages.php(67): mysqli->prepare('\n    SELECT m.c...')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/messages.php on line 67
+[07-Mar-2026 18:14:04 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'm.subject' in 'field list' in /home/code2025/students.codeflix.site/student/messages.php:67
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/messages.php(67): mysqli->prepare('\n    SELECT m.c...')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/messages.php on line 67
+[07-Mar-2026 18:15:54 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'm.subject' in 'field list' in /home/code2025/students.codeflix.site/student/messages.php:67
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/messages.php(67): mysqli->prepare('\n    SELECT m.c...')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/messages.php on line 67
+[07-Mar-2026 18:56:46 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'u.full_name' in 'field list' in /home/code2025/students.codeflix.site/student/messages.php:43
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/messages.php(43): mysqli->prepare('\r\n    SELECT u....')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/messages.php on line 43
+[07-Mar-2026 18:57:23 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'u.full_name' in 'field list' in /home/code2025/students.codeflix.site/student/messages.php:43
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/messages.php(43): mysqli->prepare('\r\n    SELECT u....')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/messages.php on line 43
+[07-Mar-2026 18:58:35 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'u.full_name' in 'field list' in /home/code2025/students.codeflix.site/student/messages.php:43
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/messages.php(43): mysqli->prepare('\r\n    SELECT u....')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/messages.php on line 43
+[07-Mar-2026 18:58:36 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'u.full_name' in 'field list' in /home/code2025/students.codeflix.site/student/messages.php:43
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/messages.php(43): mysqli->prepare('\r\n    SELECT u....')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/messages.php on line 43
+[07-Mar-2026 18:58:45 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'u.full_name' in 'field list' in /home/code2025/students.codeflix.site/student/messages.php:43
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/messages.php(43): mysqli->prepare('\r\n    SELECT u....')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/messages.php on line 43
+[07-Mar-2026 18:58:50 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'u.full_name' in 'field list' in /home/code2025/students.codeflix.site/student/messages.php:43
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/messages.php(43): mysqli->prepare('\r\n    SELECT u....')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/messages.php on line 43
+[07-Mar-2026 18:58:55 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'u.full_name' in 'field list' in /home/code2025/students.codeflix.site/student/messages.php:43
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/messages.php(43): mysqli->prepare('\r\n    SELECT u....')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/messages.php on line 43
+[07-Mar-2026 19:00:09 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'u.full_name' in 'field list' in /home/code2025/students.codeflix.site/student/messages.php:43
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/messages.php(43): mysqli->prepare('\r\n    SELECT u....')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/messages.php on line 43
+[07-Mar-2026 19:00:10 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Unknown column 'u.full_name' in 'field list' in /home/code2025/students.codeflix.site/student/messages.php:43
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/messages.php(43): mysqli->prepare('\r\n    SELECT u....')
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/messages.php on line 43
+[26-Mar-2026 04:22:05 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`code2025_login_system`.`messages`, CONSTRAINT `fk_message_case` FOREIGN KEY (`case_id`) REFERENCES `cases` (`case_id`) ON DELETE CASCADE) in /home/code2025/students.codeflix.site/student/messages.php:154
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/messages.php(154): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/messages.php on line 154
+[26-Mar-2026 22:11:52 Asia/Manila] PHP Fatal error:  Uncaught mysqli_sql_exception: Cannot add or update a child row: a foreign key constraint fails (`code2025_login_system`.`messages`, CONSTRAINT `fk_message_case` FOREIGN KEY (`case_id`) REFERENCES `cases` (`case_id`) ON DELETE CASCADE) in /home/code2025/students.codeflix.site/student/messages.php:146
+Stack trace:
+#0 /home/code2025/students.codeflix.site/student/messages.php(146): mysqli_stmt->execute()
+#1 {main}
+  thrown in /home/code2025/students.codeflix.site/student/messages.php on line 146
+[26-Mar-2026 23:54:40 Asia/Manila] PHP Parse error:  Unclosed '(' in /home/code2025/students.codeflix.site/student/messages.php on line 387
+[26-Mar-2026 23:54:42 Asia/Manila] PHP Parse error:  Unclosed '(' in /home/code2025/students.codeflix.site/student/messages.php on line 387
+[26-Mar-2026 23:54:47 Asia/Manila] PHP Parse error:  Unclosed '(' in /home/code2025/students.codeflix.site/student/messages.php on line 387
+[26-Mar-2026 23:54:49 Asia/Manila] PHP Parse error:  Unclosed '(' in /home/code2025/students.codeflix.site/student/messages.php on line 387
+[26-Mar-2026 23:55:03 Asia/Manila] PHP Parse error:  Unclosed '(' in /home/code2025/students.codeflix.site/student/messages.php on line 387
+[27-Mar-2026 16:06:38 Asia/Manila] PHP Parse error:  syntax error, unexpected end of file in /home/code2025/students.codeflix.site/student/messages.php on line 390
+[27-Mar-2026 16:06:39 Asia/Manila] PHP Parse error:  syntax error, unexpected end of file in /home/code2025/students.codeflix.site/student/messages.php on line 390
+[27-Mar-2026 16:06:41 Asia/Manila] PHP Parse error:  syntax error, unexpected end of file in /home/code2025/students.codeflix.site/student/messages.php on line 390
+[27-Mar-2026 16:06:50 Asia/Manila] PHP Parse error:  syntax error, unexpected end of file in /home/code2025/students.codeflix.site/student/messages.php on line 390
+[27-Mar-2026 16:21:49 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:21:49 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:21:55 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:21:55 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:21:56 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:21:56 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:21:57 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:21:57 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:21:58 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:21:58 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:22:35 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:22:35 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:26:10 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:26:10 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:26:35 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:26:35 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:32:17 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 16:32:17 Asia/Manila] PHP Deprecated:  htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated in /home/code2025/students.codeflix.site/student/messages.php on line 283
+[27-Mar-2026 19:00:24 Asia/Manila] PHP Parse error:  syntax error, unexpected identifier " " in /home/code2025/students.codeflix.site/student/profile.php on line 5
+[27-Mar-2026 19:00:26 Asia/Manila] PHP Parse error:  syntax error, unexpected identifier " " in /home/code2025/students.codeflix.site/student/profile.php on line 5
+[27-Mar-2026 19:00:34 Asia/Manila] PHP Parse error:  syntax error, unexpected identifier " " in /home/code2025/students.codeflix.site/student/profile.php on line 5
+[27-Mar-2026 19:00:57 Asia/Manila] PHP Parse error:  syntax error, unexpected identifier " " in /home/code2025/students.codeflix.site/student/profile.php on line 5
+[27-Mar-2026 19:00:59 Asia/Manila] PHP Parse error:  syntax error, unexpected identifier " " in /home/code2025/students.codeflix.site/student/profile.php on line 5
+[27-Mar-2026 19:09:35 Asia/Manila] PHP Parse error:  syntax error, unexpected identifier " " in /home/code2025/students.codeflix.site/student/profile.php on line 5
+[27-Mar-2026 19:09:38 Asia/Manila] PHP Parse error:  syntax error, unexpected identifier " " in /home/code2025/students.codeflix.site/student/profile.php on line 5
