@@ -29,8 +29,8 @@ if (!empty($_GET['q'])) {
 }
 
 // --- STEP 1: COUNT TOTAL RECORDS (For Pagination) ---
-$countSql = "SELECT COUNT(*) 
-             FROM audit_logs a 
+$countSql = "SELECT COUNT(*)
+             FROM audit_logs a
              LEFT JOIN users u ON a.user_id = u.user_id";
 
 if ($where) {
@@ -43,8 +43,8 @@ $totalRecords = $countStmt->fetchColumn();
 $totalPages = ceil($totalRecords / $limit);
 
 // --- STEP 2: FETCH ACTUAL DATA ---
-$sql = "SELECT a.*, u.username 
-        FROM audit_logs a 
+$sql = "SELECT a.*, u.username
+        FROM audit_logs a
         LEFT JOIN users u ON a.user_id = u.user_id";
 
 if ($where) {
@@ -82,12 +82,12 @@ function getPageUrl($newPage) {
     <link rel="stylesheet" href="../assets/css/audit_logs.css?v=<?php echo time(); ?>">
 </head>
 <body>
-  
+
   <?php include __DIR__ . '/../includes/sidebar.php'; ?>
 
-  <div class="main-content"> 
+  <div class="main-content">
     <div class="container">
-        
+
         <div class="page-header">
             <div>
                 <h2><i class="fas fa-history text-primary"></i> System Audit Logs</h2>
@@ -146,7 +146,7 @@ function getPageUrl($newPage) {
                                     <?= date('M d, Y', strtotime($log['created_at'])) ?><br>
                                     <small><?= date('h:i A', strtotime($log['created_at'])) ?></small>
                                 </td>
-                                
+
                                 <td>
                                     <div class="user-cell">
                                         <strong><?= htmlspecialchars($log['username'] ?? 'System / Guest') ?></strong>
@@ -155,9 +155,9 @@ function getPageUrl($newPage) {
                                         <?php endif; ?>
                                     </div>
                                 </td>
-                                
+
                                 <td>
-                                    <?php 
+                                    <?php
                                         $badgeClass = 'badge-info';
                                         if (strpos($log['action'], 'DELETE') !== false || strpos($log['action'], 'FAIL') !== false) {
                                             $badgeClass = 'badge-danger';
@@ -171,25 +171,25 @@ function getPageUrl($newPage) {
                                         <?= htmlspecialchars($log['action']) ?>
                                     </span>
                                 </td>
-                                
+
                                 <td><span class="table-name"><?= htmlspecialchars($log['table_name'] ?? '-') ?></span></td>
                                 <td><strong><?= htmlspecialchars($log['object_id'] ?? '-') ?></strong></td>
-                                
+
                                 <td class="data-cell">
-                                    <?php 
+                                    <?php
                                         $data = json_decode($log['changed_data'], true);
                                         if (is_array($data) && !empty($data)) {
                                             echo '<div class="data-list">';
                                             foreach ($data as $key => $val) {
                                                 if (in_array($key, ['password', 'password_hash', 'token'])) {
-                                                    $val = '********'; 
+                                                    $val = '********';
                                                 }
                                                 if (is_array($val)) {
                                                     $val = json_encode($val);
                                                 }
                                                 $formattedKey = ucwords(str_replace('_', ' ', $key));
                                                 echo "<div class='data-item'>
-                                                        <span class='data-key'>{$formattedKey}:</span> 
+                                                        <span class='data-key'>{$formattedKey}:</span>
                                                         <span class='data-val'>" . htmlspecialchars($val) . "</span>
                                                       </div>";
                                             }
@@ -199,7 +199,7 @@ function getPageUrl($newPage) {
                                         }
                                     ?>
                                 </td>
-                                
+
                                 <td class="ip-cell"><i class="fas fa-network-wired"></i> <?= htmlspecialchars($log['ip_address'] ?? 'Unknown') ?></td>
                             </tr>
                             <?php endforeach; ?>

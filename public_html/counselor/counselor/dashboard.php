@@ -1,12 +1,8 @@
-<?php 
+<?php
 require_once __DIR__ . '/../config/counselor_auth_guard.php';
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 // 1. Hook sa Database (PDO) at Header
-require_once __DIR__ . '/../config/db.php'; 
-include __DIR__ . '/../includes/header.php'; 
+require_once __DIR__ . '/../config/db.php';
+include __DIR__ . '/../includes/header.php';
 
 // Dito natin gagamitin ang $pdo galing sa db.php mo
 $total_cases = 0;
@@ -37,9 +33,9 @@ try {
 
     // E. Data para sa Chart (Cases per Month)
     $chart_data = $pdo->query("
-        SELECT DATE_FORMAT(created_at, '%b') as m, COUNT(*) as c 
-        FROM cases 
-        GROUP BY MONTH(created_at) 
+        SELECT DATE_FORMAT(created_at, '%b') as m, COUNT(*) as c
+        FROM cases
+        GROUP BY MONTH(created_at)
         ORDER BY MONTH(created_at)
     ")->fetchAll();
 
@@ -53,14 +49,14 @@ try {
 }
 ?>
 
-<link rel="stylesheet" href="https://codeflix.site/counselor/assets/css/dashboard.css">
+<link rel="stylesheet" href="/counselor//assets/css/dashboard.css">
 
 <div class="container">
     <div class="page-header">
         <h1>Counselor Dashboard</h1>
         <p>System overview and statistics</p>
     </div>
-    
+
     <div class="stats-grid">
         <div class="stat-card">
             <h3>Total Cases</h3>

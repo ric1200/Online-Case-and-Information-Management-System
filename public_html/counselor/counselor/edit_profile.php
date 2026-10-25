@@ -1,9 +1,6 @@
 <?php
 require_once __DIR__ . '/../config/counselor_auth_guard.php';
-ob_start(); 
-ini_set('display_errors', 1);
-error_reporting(E_ALL);
-
+ob_start();
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
@@ -45,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
         if (!empty($_FILES['avatar']['name'])) {
             $target_dir = "../uploads/avatars/";
             if (!is_dir($target_dir)) mkdir($target_dir, 0777, true);
-            
+
             $file_ext = pathinfo($_FILES["avatar"]["name"], PATHINFO_EXTENSION);
             $new_file_name = "avatar_" . $session_user_id . "_" . time() . "." . $file_ext;
             $target_file = $target_dir . $new_file_name;
@@ -56,15 +53,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
             }
         }
 
-        $sql = "UPDATE counselor_profiles SET 
-                specialization = :spec, 
-                office_location = :off, 
-                phone_number = :ph, 
-                address = :addr, 
-                city = :cty, 
-                zip_code = :zip, 
-                gender = :gen, 
-                birth_date = :bd 
+        $sql = "UPDATE counselor_profiles SET
+                specialization = :spec,
+                office_location = :off,
+                phone_number = :ph,
+                address = :addr,
+                city = :cty,
+                zip_code = :zip,
+                gender = :gen,
+                birth_date = :bd
                 $avatar_sql
                 WHERE user_id = :uid";
 
@@ -73,8 +70,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['update_profile'])) {
 
         // REKTA SA PROFILE: Dito ang magic.
         header("Location: profile.php?status=updated");
-        exit(); 
-        
+        exit();
+
     } catch (PDOException $e) {
         $error_msg = "Error: " . $e->getMessage();
     }
@@ -103,16 +100,16 @@ $data = $stmt->fetch(PDO::FETCH_ASSOC);
 
 <div class="edit-container">
     <h2>Edit Counselor Profile</h2>
-    
+
     <?php if(isset($error_msg)): ?>
         <div class="danger-alert"><?= $error_msg ?></div>
     <?php endif; ?>
 
     <form action="" method="POST" enctype="multipart/form-data" class="form-card">
-        
+
         <div class="form-group" style="text-align: center;">
             <label>Profile Picture</label>
-            <?php 
+            <?php
                 $avatar = !empty($data['avatar_path']) ? $data['avatar_path'] : 'default_counselor.png';
             ?>
             <img src="../uploads/avatars/<?= $avatar ?>" class="avatar-preview" id="preview">

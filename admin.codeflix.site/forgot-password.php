@@ -1,10 +1,5 @@
 <?php
 declare(strict_types=1);
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 session_start();
 
 // Ensure these paths are correct for your file structure
@@ -31,7 +26,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'email'    => $identifier,
             'username' => $identifier
         ]);
-        
+
         $user = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // Always show success message (Security best practice)
@@ -55,7 +50,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             ]);
 
             // Build reset link
-            $link = "https://admin.codeflix.site/set-password.php?token=" . urlencode($token);
+            $link = "/admin//set-password.php?token=" . urlencode($token);
 
             // Email content
             $subject = "Counseling Office Reset Request";
@@ -84,7 +79,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <title>Forgot Password | Counseling Office</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    
+
     <style>
         /* ===== Reset ===== */
         * {
@@ -100,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             display: flex;
             justify-content: center;
             align-items: center;
-            background: 
+            background:
                 linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
                 url("/assets/image/images.jpg") no-repeat center center;
             background-size: cover;
@@ -124,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             justify-content: center;
             margin-bottom: 20px;
         }
-        
+
         .icon-wrap svg {
             width: 64px;
             height: 64px;
@@ -206,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             font-size: 14px;
             border: 1px solid #ceead6;
         }
-        
+
         .success-box strong {
             font-size: 16px;
             display: block;
@@ -248,14 +243,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     </div>
 
     <h2>Forgot password?</h2>
-    
+
     <?php if ($submitted): ?>
-        
+
         <div class="success-box">
             <strong>Check your email!</strong>
             If an account exists with that <b>username</b> or <b>email</b>, we've sent a password reset link to the registered email address.
         </div>
-        
+
         <p class="subtitle" style="font-size: 14px; margin-bottom: 10px;">
             Did not receive the email? Check your spam folder or try again.
         </p>
@@ -271,16 +266,16 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <form method="POST">
             <div class="form-group">
                 <label for="identifier">Email or Username</label>
-                <input 
-                    type="text" 
-                    id="identifier" 
-                    name="identifier" 
-                    placeholder="e.g. johndoe or john@example.com" 
-                    required 
+                <input
+                    type="text"
+                    id="identifier"
+                    name="identifier"
+                    placeholder="e.g. johndoe or john@example.com"
+                    required
                     autocomplete="username"
                 >
             </div>
-            
+
             <button type="submit">Send Reset Link</button>
         </form>
 

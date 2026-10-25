@@ -44,7 +44,7 @@ if ($name_stmt) {
         if ($name_result && $name_row = $name_result->fetch_assoc()) {
             $fname = trim($name_row['first_name'] ?? '');
             $lname = trim($name_row['last_name'] ?? '');
-            
+
             if ($fname !== '' && $lname !== '') {
                 $student_name = $fname . ' ' . $lname;
             } elseif ($fname !== '') {
@@ -65,7 +65,7 @@ if ($name_stmt) {
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --primary: #062456;
@@ -113,17 +113,17 @@ if ($name_stmt) {
             padding: 0 24px;
         }
 
-        .profile-back-link { 
-            display: inline-block; 
-            margin-bottom: 8px; 
-            color: #93c5fd; 
-            text-decoration: none; 
-            font-size: 0.9rem; 
+        .profile-back-link {
+            display: inline-block;
+            margin-bottom: 8px;
+            color: #93c5fd;
+            text-decoration: none;
+            font-size: 0.9rem;
             font-weight: 500;
             transition: color 0.2s;
         }
-        
-        .profile-back-link:hover { 
+
+        .profile-back-link:hover {
             color: #ffffff;
         }
 
@@ -296,7 +296,7 @@ if ($name_stmt) {
         .form-section {
             margin-bottom: 32px;
         }
-        
+
         .form-section:last-of-type {
             margin-bottom: 0;
         }
@@ -452,7 +452,7 @@ if ($name_stmt) {
             </p>
         <?php else: ?>
             <div class="landscape-grid">
-                
+
                 <section class="profile-card">
                     <div class="profile-top-banner"></div>
                     <div class="profile-avatar-section">
@@ -460,7 +460,7 @@ if ($name_stmt) {
                             <img src="<?php echo htmlspecialchars($avatar); ?>" alt="Student Avatar" class="avatar-img">
                         </div>
                         <h2 class="student-name"><?php echo htmlspecialchars($student_name); ?></h2>
-                        
+
                         <p class="student-id">
                             Student ID: <?php echo htmlspecialchars($profile['student_id'] ?? $user_id); ?>
                         </p>
@@ -523,7 +523,7 @@ if ($name_stmt) {
                         </div>
 
                         <form id="edit-form" class="profile-form" action="update_profile.php" method="POST" enctype="multipart/form-data">
-                            
+
                             <div class="form-section">
                                 <h4 class="form-section-title">Profile Photo</h4>
                                 <div class="form-grid">

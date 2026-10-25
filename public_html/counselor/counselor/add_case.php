@@ -1,23 +1,19 @@
-<?php 
+<?php
 require_once __DIR__ . '/../config/counselor_auth_guard.php';
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/../config/db.php'; 
-include __DIR__ . '/../includes/header.php'; 
+require_once __DIR__ . '/../config/db.php';
+include __DIR__ . '/../includes/header.php';
 
 $successMessage = '';
 $errorMessage = '';
 
-$counselor_id = $_SESSION['user_id'] ?? null; 
+$counselor_id = $_SESSION['user_id'] ?? null;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $student_user_id_input = $_POST['student_user_id'] ?? ''; 
+    $student_user_id_input = $_POST['student_user_id'] ?? '';
     $title = $_POST['title'] ?? '';
     $description = $_POST['description'] ?? '';
     $priority = $_POST['priority'] ?? 'Medium';
@@ -28,13 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     } elseif (!empty($student_user_id_input) && !empty($title) && !empty($description)) {
         try {
             $insertStmt = $pdo->prepare("
-                INSERT INTO cases (student_user_id, counselor_id, title, description, priority, status, created_at) 
+                INSERT INTO cases (student_user_id, counselor_id, title, description, priority, status, created_at)
                 VALUES (:student_user_id, :counselor_id, :title, :description, :priority, :status, NOW())
             ");
-            
+
             $insertStmt->execute([
-                ':student_user_id' => $student_user_id_input, 
-                ':counselor_id'    => $counselor_id, 
+                ':student_user_id' => $student_user_id_input,
+                ':counselor_id'    => $counselor_id,
                 ':title'           => $title,
                 ':description'     => $description,
                 ':priority'        => $priority,
@@ -53,10 +49,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // FETCH STUDENTS - Dinagdag natin ang u.user_id sa SELECT query
 try {
     $stmt = $pdo->prepare("
-        SELECT u.user_id, u.username, u.first_name, u.last_name, sp.student_id 
+        SELECT u.user_id, u.username, u.first_name, u.last_name, sp.student_id
         FROM users u
         LEFT JOIN student_profiles sp ON u.user_id = sp.user_id
-        WHERE u.division = 'student' 
+        WHERE u.division = 'student'
         ORDER BY u.first_name ASC
     ");
     $stmt->execute();
@@ -85,7 +81,7 @@ try {
     <div style="margin-bottom: 25px;">
         <h1 style="font-weight: 800; margin:0;">Add New Case</h1>
         <p style="color: #8c92a0;">Recording as Counselor ID: <?= htmlspecialchars($counselor_id) ?></p>
-        
+
                     <a href="cases.php" class="back-link" style="display: block; text-align: right;"><i class="fas fa-arrow-left"></i> Back to Directory</a>
     </div>
 
@@ -104,12 +100,12 @@ try {
 
         <form method="POST">
             <div class="form-grid">
-                
+
                 <div class="form-group full-width">
                     <label>Select Student</label>
                     <select name="student_user_id" id="student_user_id" class="form-control" required>
                         <option value=""></option>
-                        <?php foreach ($students as $student): 
+                        <?php foreach ($students as $student):
                             // Display ID (Ito yung nakikita ng user)
                             $display_id = !empty($student['student_id']) ? $student['student_id'] : $student['username'];
                             // Database ID (Ito yung isesave sa database)

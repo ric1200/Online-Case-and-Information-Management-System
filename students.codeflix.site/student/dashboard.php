@@ -17,7 +17,7 @@ if (!isset($conn) || !($conn instanceof mysqli)) {
 // 1. KUNIN ANG RECENT CASES (Limit to 2)
 $recent_cases = [];
 $stmt_cases = $conn->prepare("
-    SELECT c.*, u.first_name, u.last_name 
+    SELECT c.*, u.first_name, u.last_name
     FROM cases c
     LEFT JOIN users u ON c.counselor_id = u.user_id
     WHERE c.student_user_id = ?
@@ -36,7 +36,7 @@ if ($stmt_cases) {
 // 2. KUNIN ANG NEW MESSAGES (Limit to 2 most recent)
 $recent_messages = [];
 $stmt_msgs = $conn->prepare("
-    SELECT m.*, u.first_name, u.last_name 
+    SELECT m.*, u.first_name, u.last_name
     FROM messages m
     LEFT JOIN users u ON m.sender_id = u.user_id
     WHERE m.recipient_id = ?
@@ -55,7 +55,7 @@ if ($stmt_msgs) {
 // 3. KUNIN ANG UPCOMING SCHEDULE (Limit to 2)
 $upcoming_schedules = [];
 $stmt_sched = $conn->prepare("
-    SELECT cs.*, u.first_name, u.last_name 
+    SELECT cs.*, u.first_name, u.last_name
     FROM counseling_schedules cs
     LEFT JOIN users u ON cs.counselor_id = u.user_id
     WHERE cs.student_id = ? AND cs.schedule_date >= CURDATE()
@@ -74,12 +74,12 @@ if ($stmt_sched) {
 // 4. KUNIN ANG ACTIVE ANNOUNCEMENTS (Limit to 3)
 $announcements = [];
 $stmt_ann = $conn->prepare("
-    SELECT title, content, created_at 
-    FROM announcements 
-    WHERE status = 'ACTIVE' 
-    AND CURDATE() >= start_date 
-    AND CURDATE() <= end_date 
-    ORDER BY created_at DESC 
+    SELECT title, content, created_at
+    FROM announcements
+    WHERE status = 'ACTIVE'
+    AND CURDATE() >= start_date
+    AND CURDATE() <= end_date
+    ORDER BY created_at DESC
     LIMIT 3
 ");
 if ($stmt_ann) {
@@ -156,7 +156,7 @@ if ($stmt_ann) {
                 </div>
             <?php else: ?>
                 <ul class="item-list">
-                    <?php foreach ($recent_cases as $case): 
+                    <?php foreach ($recent_cases as $case):
                         // TINANGGAL ANG "Dr. ", ipapakita ang first name at last name
                         $counselor = !empty($case['first_name']) ? $case['first_name'] . ' ' . $case['last_name'] : "Counselor";
                         $status = ucfirst($case['status'] ?: 'Unknown');
@@ -192,7 +192,7 @@ if ($stmt_ann) {
                 </div>
             <?php else: ?>
                 <ul class="item-list">
-                    <?php foreach ($recent_messages as $msg): 
+                    <?php foreach ($recent_messages as $msg):
                         // TINANGGAL ANG "Dr. ", ipapakita ang first name at last name
                         $sender = !empty($msg['first_name']) ? $msg['first_name'] . ' ' . $msg['last_name'] : "Counselor";
                         $time = date("M d, g:i A", strtotime($msg['created_at']));
@@ -261,7 +261,7 @@ if ($stmt_ann) {
                 </div>
             <?php else: ?>
                 <ul class="item-list">
-                    <?php foreach ($upcoming_schedules as $sched): 
+                    <?php foreach ($upcoming_schedules as $sched):
                         $date = date("l", strtotime($sched['schedule_date'])); // Day of the week (e.g., Monday)
                         $time = date("g:i A", strtotime($sched['schedule_time']));
                         $status = ucfirst($sched['status'] ?: 'Scheduled');

@@ -1,17 +1,13 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
 // I-connect ang database
-require_once __DIR__ . '/../config/db.php'; 
+require_once __DIR__ . '/../config/db.php';
 
 // Kunin ang student ID mula sa session (Fallback test ID)
-$student_id = $_SESSION['user_id'] ?? 'STD-001'; 
+$student_id = $_SESSION['user_id'] ?? 'STD-001';
 
 // ==========================================
 // KUNIN ANG MGA COUNSELORS SA DATABASE
@@ -29,13 +25,13 @@ try {
 // LOGIC PARA SA PAG-SEND NG MESSAGE
 // ==========================================
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_message'])) {
-    $recipient_id = $_POST['recipient_id']; 
+    $recipient_id = $_POST['recipient_id'];
     $subject = $_POST['subject'];
     $agenda = $_POST['agenda'];
     $content = $_POST['content'];
 
     try {
-        $insert_sql = "INSERT INTO messages (sender_id, recipient_id, subject, agenda, content, status) 
+        $insert_sql = "INSERT INTO messages (sender_id, recipient_id, subject, agenda, content, status)
                        VALUES (:sender, :recipient, :subject, :agenda, :content, 'Unread')";
         $stmt = $pdo->prepare($insert_sql);
         $stmt->execute([
@@ -60,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_message'])) {
 <body>
 
     <h1>Welcome, <?php echo htmlspecialchars($student_id); ?></h1>
-    
+
     <hr>
 
     <h2>Send a Message to Counselor</h2>
@@ -105,15 +101,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_message'])) {
     <hr>
 
     <h2>Your Conversation History</h2>
-    
+
     <?php
     try {
-        $fetch_sql = "SELECT * FROM messages 
-                      WHERE sender_id = :sid OR recipient_id = :sid2 
+        $fetch_sql = "SELECT * FROM messages
+                      WHERE sender_id = :sid OR recipient_id = :sid2
                       ORDER BY created_at DESC";
         $fetchStmt = $pdo->prepare($fetch_sql);
         $fetchStmt->execute([
-            ':sid' => $student_id, 
+            ':sid' => $student_id,
             ':sid2' => $student_id
         ]);
         $all_messages = $fetchStmt->fetchAll();
@@ -122,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['send_message'])) {
             echo "<ul>";
             foreach ($all_messages as $msg) {
                 $type = ($msg['sender_id'] === $student_id) ? "Sent to: " . $msg['recipient_id'] : "Received from: " . $msg['sender_id'];
-                
+
                 $date = date("M d, Y h:i A", strtotime($msg['created_at']));
                 $subject = htmlspecialchars($msg['subject']);
                 $agenda = htmlspecialchars($msg['agenda']);

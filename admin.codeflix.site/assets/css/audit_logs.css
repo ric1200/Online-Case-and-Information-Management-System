@@ -26,7 +26,7 @@ body {
     top: 0;
     left: 0;
     padding: 20px;
-    box-sizing: border-box; 
+    box-sizing: border-box;
     overflow-y: auto;
     z-index: 1000;
 }
@@ -157,7 +157,7 @@ body {
     box-sizing: border-box;
     transition: all 0.2s;
     background: #f8fafc;
-    color: #111827; 
+    color: #111827;
     font-weight: 500;
 }
 
@@ -340,84 +340,84 @@ table tbody tr:hover {
    ========================================= */
 @media print {
     /* Set page to Landscape by default to fit wide tables */
-    @page { 
-        size: landscape; 
+    @page {
+        size: landscape;
         margin: 10mm; /* Minimal margins for maximum space */
     }
-    
-    body { 
-        background-color: #fff; 
+
+    body {
+        background-color: #fff;
     }
-    
-    .no-print, .sidebar { 
-        display: none !important; 
+
+    .no-print, .sidebar {
+        display: none !important;
     }
-    
+
     /* Remove sidebar margins and full width */
-    .main-content { 
-        margin: 0 !important; 
-        padding: 0 !important; 
-        width: 100% !important; 
+    .main-content {
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
     }
-    
-    .container { 
-        width: 100% !important; 
-        max-width: 100% !important; 
+
+    .container {
+        width: 100% !important;
+        max-width: 100% !important;
     }
 
     /* Clean up headers and borders */
-    .table-card { 
-        box-shadow: none !important; 
-        border: none !important; 
+    .table-card {
+        box-shadow: none !important;
+        border: none !important;
         overflow: visible !important; /* Important: removes scrolling constraints so it prints */
     }
-    
-    .table-responsive { 
+
+    .table-responsive {
         overflow: visible !important; /* Stop clipping */
     }
-    
-    .page-header { 
-        box-shadow: none !important; 
-        border-left: none !important; 
-        padding: 0 !important; 
-        margin-bottom: 20px !important; 
+
+    .page-header {
+        box-shadow: none !important;
+        border-left: none !important;
+        padding: 0 !important;
+        margin-bottom: 20px !important;
     }
-    
+
     /* Table specific print styles */
-    table { 
-        width: 100% !important; 
+    table {
+        width: 100% !important;
         table-layout: auto !important; /* Let it resize columns naturally */
     }
-    
+
     /* Make text smaller and wrap correctly */
-    table th, table td { 
-        padding: 8px 6px !important; 
-        border-bottom: 1px solid #ccc !important; 
+    table th, table td {
+        padding: 8px 6px !important;
+        border-bottom: 1px solid #ccc !important;
         font-size: 10pt !important; /* Slightly smaller font for print */
         white-space: normal !important; /* FORCE text to wrap! */
-        word-wrap: break-word !important; 
+        word-wrap: break-word !important;
     }
-    
-    table th { 
-        background-color: transparent !important; 
-        color: #000 !important; 
-        border-bottom: 2px solid #000 !important; 
+
+    table th {
+        background-color: transparent !important;
+        color: #000 !important;
+        border-bottom: 2px solid #000 !important;
         font-size: 9pt !important;
     }
-    
+
     /* Give the Data Cell a specific max width so it doesn't push others away */
     .data-cell {
         max-width: 300px;
     }
-    
-    .data-val { 
-        background: transparent !important; 
+
+    .data-val {
+        background: transparent !important;
     }
-    
+
     /* Adjust badges for print so they look like bordered text */
-    .badge { 
-        border: 1px solid #666; 
-        color: #000 !important; 
-        background: transparent !important; 
+    .badge {
+        border: 1px solid #666;
+        color: #000 !important;
+        background: transparent !important;
     }
 }

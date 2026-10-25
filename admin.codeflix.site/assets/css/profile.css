@@ -4,7 +4,7 @@
 body {
     margin: 0;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: #eef2f7; 
+    background: #eef2f7;
     color: #333;
 }
 
@@ -15,9 +15,9 @@ body {
     box-sizing: border-box;
 }
 
-.container { 
-    max-width: 1100px; 
-    margin: 0 auto; 
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 /* Page Header Design */
@@ -30,23 +30,23 @@ body {
     border-left: 6px solid #0a192f;
 }
 
-.page-header h1 { 
-    margin: 0; 
-    font-size: 1.8rem; 
-    color: #0a192f; 
+.page-header h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: #0a192f;
 }
 
-.subtitle { 
-    margin: 5px 0 0 0; 
-    color: #6c757d; 
-    font-size: 1rem; 
+.subtitle {
+    margin: 5px 0 0 0;
+    color: #6c757d;
+    font-size: 1rem;
 }
 
 /* Profile Grid Layout */
-.profile-grid { 
-    display: grid; 
-    grid-template-columns: 350px 1fr; 
-    gap: 24px; 
+.profile-grid {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 24px;
 }
 
 /* Card Styles */
@@ -59,8 +59,8 @@ body {
 }
 
 /* Avatar Section */
-.avatar-section { 
-    text-align: center; 
+.avatar-section {
+    text-align: center;
 }
 
 .avatar-container {
@@ -95,16 +95,16 @@ body {
     transition: 0.3s ease;
 }
 
-.btn-avatar-edit:hover { 
-    background: #1a62e6; 
-    transform: scale(1.1); 
+.btn-avatar-edit:hover {
+    background: #1a62e6;
+    transform: scale(1.1);
 }
 
-.profile-name { 
-    font-size: 1.4rem; 
-    color: #0a192f; 
-    margin-bottom: 10px; 
-    font-weight: 700; 
+.profile-name {
+    font-size: 1.4rem;
+    color: #0a192f;
+    margin-bottom: 10px;
+    font-weight: 700;
 }
 
 /* Badge from manage_users.css */
@@ -155,18 +155,18 @@ body {
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
 }
 
-.detail-label { 
-    display: block; 
-    font-size: 0.75rem; 
-    color: #64748b; 
-    text-transform: uppercase; 
-    font-weight: 700; 
+.detail-label {
+    display: block;
+    font-size: 0.75rem;
+    color: #64748b;
+    text-transform: uppercase;
+    font-weight: 700;
 }
 
-.detail-value { 
-    font-size: 1rem; 
-    color: #1e293b; 
-    font-weight: 500; 
+.detail-value {
+    font-size: 1rem;
+    color: #1e293b;
+    font-weight: 500;
 }
 
 /* Buttons */
@@ -187,9 +187,9 @@ body {
     box-sizing: border-box;
 }
 
-.btn-edit-profile:hover { 
-    background: #1a62e6; 
-    box-shadow: 0 4px 12px rgba(45, 120, 255, 0.3); 
+.btn-edit-profile:hover {
+    background: #1a62e6;
+    box-shadow: 0 4px 12px rgba(45, 120, 255, 0.3);
 }
 
 @media (max-width: 900px) {

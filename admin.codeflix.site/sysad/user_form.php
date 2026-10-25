@@ -1,9 +1,5 @@
 <?php
 require_once __DIR__ . '/../config/auth_guard.php';
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 // FILE: sysad/user_form.php
 // FIXED: Ginawang safe check para hindi mag-error kung may session na
 if (session_status() === PHP_SESSION_NONE) {
@@ -37,9 +33,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     try {
         if ($id) {
             // UPDATE
-            $sql = "UPDATE users SET 
-                    first_name=?, middle_name=?, last_name=?, email=?, 
-                    username=?, division=?, role=?, status=? 
+            $sql = "UPDATE users SET
+                    first_name=?, middle_name=?, last_name=?, email=?,
+                    username=?, division=?, role=?, status=?
                     WHERE user_id=?";
 
             $stmt = $pdo->prepare($sql);
@@ -62,8 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         } else {
             // INSERT
-            $sql = "INSERT INTO users 
-                    (first_name, middle_name, last_name, email, username, division, role, status) 
+            $sql = "INSERT INTO users
+                    (first_name, middle_name, last_name, email, username, division, role, status)
                     VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
             $stmt = $pdo->prepare($sql);
@@ -101,7 +97,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     <meta charset="UTF-8">
     <title><?= $user ? 'Edit' : 'Add' ?> User | Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="../assets/css/user_form.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -111,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 <div class="main-content">
     <div class="container form-container">
-        
+
         <div class="page-header">
             <a href="manage_users.php" class="back-link"><i class="fas fa-arrow-left"></i> Back to Users</a>
             <h1><?= $user ? 'Edit User Profile' : 'Add New User' ?></h1>
@@ -127,7 +123,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <div class="form-card">
             <form method="post">
                 <h3 class="section-title"><i class="far fa-id-card"></i> Personal Information</h3>
-                
+
                 <div class="form-row">
                     <div class="form-group">
                         <label>First Name <span class="required">*</span></label>
@@ -162,12 +158,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="form-group">
                         <label>System Role <span class="required">*</span></label>
                         <select name="role" required>
-                            <?php 
+                            <?php
                             $roles = [
-                                'ADMIN' => 'Admin', 
-                                'COUNSELOR' => 'Counselor', 
+                                'ADMIN' => 'Admin',
+                                'COUNSELOR' => 'Counselor',
                                 'STUDENT' => 'Student'
-                                
+
                             ];
                             foreach ($roles as $db_val => $display_text) {
                                 $selected = ($user['role'] ?? '') === $db_val ? 'selected' : '';
@@ -180,11 +176,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     <div class="form-group">
                         <label>Division <span class="required">*</span></label>
                         <select name="division" required>
-                            <?php 
+                            <?php
                             $divisions = [
-                                'ADMIN' => 'System Admin', 
-                                'COUNSELOR' => 'Counselor', 
-                                'STUDENT' => 'Student', 
+                                'ADMIN' => 'System Admin',
+                                'COUNSELOR' => 'Counselor',
+                                'STUDENT' => 'Student',
                                 'REPORT' => 'Report'
                             ];
                             foreach ($divisions as $db_val => $display_text) {
@@ -214,7 +210,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 </div>
             </form>
         </div>
-        
+
     </div>
 </div>
 

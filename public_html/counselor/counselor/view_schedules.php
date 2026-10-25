@@ -9,10 +9,10 @@ $c_id = $_SESSION['user_id'] ?? null;
 if (!$c_id) die("Access Denied.");
 
 // In-update ang query para makuha ang email at profile info kung kailangan
-$schedules = $db->prepare("SELECT s.*, u.first_name, u.last_name, u.email 
-                           FROM counseling_schedules s 
-                           JOIN users u ON s.student_user_id = u.user_id 
-                           WHERE s.counselor_id = ? 
+$schedules = $db->prepare("SELECT s.*, u.first_name, u.last_name, u.email
+                           FROM counseling_schedules s
+                           JOIN users u ON s.student_user_id = u.user_id
+                           WHERE s.counselor_id = ?
                            ORDER BY s.schedule_date DESC, s.schedule_time DESC");
 $schedules->execute([$c_id]);
 $list = $schedules->fetchAll();
@@ -21,7 +21,7 @@ $list = $schedules->fetchAll();
 <style>
     :root { --primary: #4267b2; --success: #2ecc71; --warning: #f1c40f; --danger: #e74c3c; --text: #333; }
     .content-section { max-width: 1100px; margin: 40px auto; font-family: 'Inter', sans-serif; color: var(--text); }
-    
+
     /* Table Styling */
     .schedule-card { background: white; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); overflow: hidden; border: 1px solid #eee; }
     .styled-table { width: 100%; border-collapse: collapse; }
@@ -39,12 +39,12 @@ $list = $schedules->fetchAll();
     @media print {
         body * { visibility: hidden; }
         #print-area, #print-area * { visibility: visible; }
-        #print-area { 
-            display: block !important; 
-            position: absolute; left: 0; top: 0; width: 100%; 
+        #print-area {
+            display: block !important;
+            position: absolute; left: 0; top: 0; width: 100%;
             padding: 40px; font-family: 'Courier New', Courier, monospace;
         }
-        .ticket { 
+        .ticket {
             border: 2px dashed #000; padding: 30px; max-width: 500px; margin: auto;
             text-align: center; line-height: 1.6;
         }
@@ -52,7 +52,7 @@ $list = $schedules->fetchAll();
         .ticket-info { text-align: left; margin-top: 20px; border-top: 1px solid #eee; padding-top: 15px; }
         .ticket-footer { margin-top: 30px; font-size: 0.8rem; font-style: italic; }
     }
-    
+
 </style>
 
 <div class="content-section">

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/../config/db.php'; 
+require_once __DIR__ . '/../config/db.php';
 $db = isset($pdo) ? $pdo : $conn;
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -12,10 +12,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if ($counselor_id && $student_user_id && $date && $time) {
         try {
-            $sql = "INSERT INTO counseling_schedules 
-                    (counselor_id, student_user_id, schedule_date, schedule_time, status, notes) 
+            $sql = "INSERT INTO counseling_schedules
+                    (counselor_id, student_user_id, schedule_date, schedule_time, status, notes)
                     VALUES (:cid, :suid, :sdate, :stime, 'Pending', :notes)";
-            
+
             $stmt = $db->prepare($sql);
             $stmt->execute([
                 ':cid'   => $counselor_id,

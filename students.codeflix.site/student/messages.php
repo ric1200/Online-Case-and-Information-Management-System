@@ -78,7 +78,7 @@ $stmt = $conn->prepare("
            )) AS display_name,
            username,
            email
-    FROM users 
+    FROM users
     WHERE role = 'COUNSELOR' AND status = 'ACTIVE'
     ORDER BY first_name ASC
 ");
@@ -136,9 +136,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 // Fetch Inbox Messages (All recent messages involving the user)
 $inbox_messages = [];
 $stmt = $conn->prepare("
-    SELECT sender_id, recipient_id, subject, agenda, content, created_at 
-    FROM messages 
-    WHERE sender_id = ? OR recipient_id = ? 
+    SELECT sender_id, recipient_id, subject, agenda, content, created_at
+    FROM messages
+    WHERE sender_id = ? OR recipient_id = ?
     ORDER BY created_at DESC
 ");
 if ($stmt) {
@@ -150,7 +150,7 @@ if ($stmt) {
             while ($row = $result->fetch_assoc()) {
                 $other_id = (int) ($row['sender_id'] == $user_id ? $row['recipient_id'] : $row['sender_id']);
                 $is_from_me = ($row['sender_id'] == $user_id);
-                
+
                 $inbox_messages[] = [
                     'other_id'   => $other_id,
                     'other_name' => $getUserName($other_id),
@@ -174,7 +174,7 @@ if ($stmt) {
   <title>Messages</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/assets/css/student-dashboard.css" />
-  
+
   <style>
     /* CSS para sa Message Preview at Action Buttons */
     .inbox-preview {
@@ -283,7 +283,7 @@ if ($stmt) {
 </head>
 <body>
   <div class="app-shell">
-    
+
     <header class="top-nav">
       <div class="nav-left">
         <span class="logo-mark">SCP</span>
@@ -375,7 +375,7 @@ if ($stmt) {
               </div>
             <?php else: ?>
               <div class="inbox-container">
-                <?php foreach ($inbox_messages as $msg): 
+                <?php foreach ($inbox_messages as $msg):
                     $headerText = $msg['is_from_me'] ? 'To: ' . htmlspecialchars($msg['other_name']) : 'From: Counselor ' . htmlspecialchars($msg['other_name']);
                 ?>
                   <div class="inbox-item">
@@ -384,13 +384,13 @@ if ($stmt) {
                       <span class="inbox-date"><?php echo htmlspecialchars($msg['created_at']); ?></span>
                     </div>
                     <p class="inbox-subject">[<?php echo htmlspecialchars($msg['agenda']); ?>]</p>
-                    
+
                     <p class="inbox-preview"><?php echo htmlspecialchars($msg['content']); ?></p>
-                    
+
                     <button type="button" class="btn-read-msg" onclick='openMsgModal(
-                      <?php echo json_encode($headerText); ?>, 
-                      <?php echo json_encode($msg['created_at']); ?>, 
-                      <?php echo json_encode($msg['agenda']); ?>, 
+                      <?php echo json_encode($headerText); ?>,
+                      <?php echo json_encode($msg['created_at']); ?>,
+                      <?php echo json_encode($msg['agenda']); ?>,
                       <?php echo json_encode($msg['content']); ?>,
                       <?php echo $msg['other_id']; ?>,
                       <?php echo $msg['is_from_me'] ? 'true' : 'false'; ?>
@@ -417,7 +417,7 @@ if ($stmt) {
         </p>
       </div>
       <div class="msg-modal-body" id="modalMsgText"></div>
-      
+
       <div class="msg-modal-footer">
         <button class="btn-close" onclick="closeMsgModal()">Close</button>
         <button id="btnQuickReply" class="btn-reply" style="display:none;" onclick="quickReply()">Reply to Counselor</button>
@@ -453,12 +453,12 @@ if ($stmt) {
 
     function quickReply() {
       closeMsgModal();
-      
+
       // Auto-select yung pangalan ng Counselor sa compose form
       if (currentCounselorId) {
         document.getElementById('recipient_id').value = currentCounselorId;
       }
-      
+
       // Auto-select yung agenda as 'Follow-up'
       document.getElementById('agenda').value = 'Follow-up';
 

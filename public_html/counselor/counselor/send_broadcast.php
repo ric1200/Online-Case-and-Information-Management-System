@@ -1,12 +1,8 @@
 <?php
 session_start();
 // I-ON NATIN ANG ERRORS PARA HINDI WHITE SCREEN
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 // 1. TAMANG DATABASE CONNECTION PATH (Galing sa cases.php mo)
-require_once __DIR__ . '/../config/db.php'; 
+require_once __DIR__ . '/../config/db.php';
 
 // 2. CHECK KUNG GUMANA ANG CONNECTION (PDO Version)
 if (!isset($pdo) || !($pdo instanceof PDO)) {
@@ -49,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // STEP 3: I-send ang message sa bawat student
         if (count($students) > 0) {
             $stmt3 = $pdo->prepare("INSERT INTO messages (sender_id, recipient_id, subject, content, status) VALUES (?, ?, ?, ?, 'unread')");
-            
+
             foreach ($students as $student_id) {
                 $stmt3->execute([$counselor_id, $student_id, $subject, $message]);
             }

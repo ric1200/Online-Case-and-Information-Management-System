@@ -1,10 +1,5 @@
 <?php
 declare(strict_types=1);
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 // Ensure these paths match your project structure
 require_once __DIR__ . '/config/db.php';
 require_once __DIR__ . '/../public_html/shared/config/mail_config.php';
@@ -61,7 +56,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($error)) {
             $stmt = $pdo->prepare("
                 UPDATE users
                 SET password_hash = ?
-                WHERE user_id = ? 
+                WHERE user_id = ?
             ");
             $stmt->execute([$hash, $reset['user_id']]);
 
@@ -90,7 +85,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($error)) {
     <title>Set New Password | Counseling Office</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-    
+
     <style>
         :root {
             --primary-color: #4f46e5;
@@ -239,7 +234,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($error)) {
 <body>
 
 <div class="container">
-    
+
     <div class="icon-wrap">
         <?php if ($success): ?>
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -257,10 +252,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($error)) {
         <div class="alert alert-success">
             Your password has been successfully reset.
         </div>
-        <a href="https://codeflix.site/">
+        <a href="//">
             <button class="btn-primary">Return to Counseling Portal</button>
         </a>
-    
+
     <?php elseif ($error): ?>
         <h2>Reset Failed</h2>
         <div class="alert alert-error">
@@ -278,22 +273,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && empty($error)) {
         <form method="post">
             <div class="form-group">
                 <label for="password">New Password</label>
-                <input 
-                    type="password" 
-                    id="password" 
-                    name="password" 
-                    placeholder="••••••••" 
+                <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    placeholder="••••••••"
                     required
                 >
             </div>
 
             <div class="form-group">
                 <label for="confirm_password">Confirm Password</label>
-                <input 
-                    type="password" 
-                    id="confirm_password" 
-                    name="confirm_password" 
-                    placeholder="••••••••" 
+                <input
+                    type="password"
+                    id="confirm_password"
+                    name="confirm_password"
+                    placeholder="••••••••"
                     required
                 >
             </div>

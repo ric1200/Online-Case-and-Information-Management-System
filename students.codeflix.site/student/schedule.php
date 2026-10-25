@@ -18,7 +18,7 @@ if (!isset($conn) || !($conn instanceof mysqli)) {
 // UPDATE: Nilagyan natin ng check sa parehong student_user_id at student_id para sigurado
 $upcoming_sessions = [];
 $stmt_up = $conn->prepare("
-    SELECT cs.*, u.first_name, u.last_name 
+    SELECT cs.*, u.first_name, u.last_name
     FROM counseling_schedules cs
     LEFT JOIN users u ON cs.counselor_id = u.user_id
     WHERE (cs.student_user_id = ? OR cs.student_id = ?) AND cs.schedule_date >= CURDATE()
@@ -37,7 +37,7 @@ if ($stmt_up) {
 // 2. KUNIN ANG PAST SESSIONS (Nakaraan na araw)
 $past_sessions = [];
 $stmt_past = $conn->prepare("
-    SELECT cs.*, u.first_name, u.last_name 
+    SELECT cs.*, u.first_name, u.last_name
     FROM counseling_schedules cs
     LEFT JOIN users u ON cs.counselor_id = u.user_id
     WHERE (cs.student_user_id = ? OR cs.student_id = ?) AND cs.schedule_date < CURDATE()
@@ -111,16 +111,16 @@ if ($stmt_past) {
                </div>
             <?php else: ?>
                 <ul class="item-list">
-                  <?php foreach ($upcoming_sessions as $session): 
+                  <?php foreach ($upcoming_sessions as $session):
                       // Formatting date and time
                       $date_formatted = date("l, F j, Y", strtotime($session['schedule_date']));
                       $time_formatted = date("g:i A", strtotime($session['schedule_time']));
-                      
+
                       // TINANGGAL ANG "Dr. ", ipapakita ang first name at last name
                       $counselor_name = !empty($session['first_name']) ? $session['first_name'] . ' ' . $session['last_name'] : "Counselor";
-                      
+
                       // FIX: Handling empty strings or NULL values properly
-                      $status = !empty($session['status']) ? ucfirst(trim($session['status'])) : 'Scheduled'; 
+                      $status = !empty($session['status']) ? ucfirst(trim($session['status'])) : 'Scheduled';
                   ?>
                   <li class="item-row">
                     <div class="item-main">
@@ -162,13 +162,13 @@ if ($stmt_past) {
                </div>
             <?php else: ?>
                 <ul class="item-list">
-                  <?php foreach ($past_sessions as $session): 
+                  <?php foreach ($past_sessions as $session):
                       $date_formatted = date("M d, Y", strtotime($session['schedule_date']));
-                      
-                      
+
+
                       $counselor_name = !empty($session['first_name']) ? $session['first_name'] . ' ' . $session['last_name'] : "Counselor";
-                      
-                     
+
+
                       $status = !empty($session['status']) ? ucfirst(trim($session['status'])) : 'Completed';
                   ?>
                   <li class="item-row">

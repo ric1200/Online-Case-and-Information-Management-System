@@ -1,9 +1,5 @@
 <?php
 require_once __DIR__ . '/../config/counselor_auth_guard.php';
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 require_once __DIR__ . '/../config/db.php';
 include __DIR__ . '/../includes/header.php';
 
@@ -32,8 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_case'])) {
  * Inayos ang JOIN condition para basahin ang ID man o username na naka-save sa cases table.
  */
 $stmt = $pdo->prepare("
-    SELECT 
-        c.*, 
+    SELECT
+        c.*,
         u.user_id, u.username, u.first_name, u.last_name, u.email,
         sp.program, sp.year_level, sp.phone_number, sp.gender, sp.guardian_name, sp.guardian_contact
     FROM cases c
@@ -69,25 +65,25 @@ $guardian_contact  = !empty($case['guardian_contact']) ? $case['guardian_contact
     .view-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 30px; }
     .back-link { text-decoration: none; color: #6c757d; font-size: 0.9rem; margin-bottom: 10px; display: inline-block; transition: 0.3s; }
     .back-link:hover { color: #4267b2; }
-    
+
     .action-card { background: #fff; padding: 25px; border-radius: 15px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); margin-bottom: 30px; border: 1px solid #eef2f7; }
     .action-grid { display: grid; grid-template-columns: 2fr 1fr 1fr auto; gap: 15px; align-items: flex-end; }
-    
+
     .record-card { background: #fff; padding: 50px; border-radius: 5px; box-shadow: 0 10px 30px rgba(0,0,0,0.08); position: relative; border-top: 5px solid #4267b2; }
     .record-header { border-bottom: 2px solid #f0f0f0; margin-bottom: 30px; padding-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
-    
+
     .record-logo-wrapper { display: flex; align-items: center; gap: 15px; }
     .logo-circle { width: 50px; height: 50px; object-fit: contain; }
     .record-logo-text { font-weight: 800; font-size: 1.2rem; color: #1a1a1a; }
-    
+
     .info-section { margin-bottom: 25px; }
     .info-label { font-size: 0.75rem; color: #8c92a0; text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 5px; }
     .info-value { font-size: 1rem; color: #2d3436; font-weight: 500; }
-    
+
     .section-divider { border-bottom: 1px solid #eaeaea; padding-bottom: 10px; margin-top: 35px; margin-bottom: 20px; font-size: 1.1rem; color: #4267b2; font-weight: 700; }
-    
+
     .description-box { background: #fcfcfc; padding: 20px; border-left: 4px solid #dee2e6; margin-top: 10px; min-height: 150px; line-height: 1.8; white-space: pre-wrap; color: #444; }
-    
+
     .btn-update { background: #4267b2; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; transition: 0.3s; }
     .btn-update:hover { background: #365899; }
     .btn-print { background: #f8f9fa; color: #333; border: 1px solid #dee2e6; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; }
@@ -95,8 +91,8 @@ $guardian_contact  = !empty($case['guardian_contact']) ? $case['guardian_contact
 
     /* PRINT SETTINGS */
     @media print {
-        .action-card, .back-link, .top-nav, .btn-print, .btn-update, .view-header { 
-            display: none !important; 
+        .action-card, .back-link, .top-nav, .btn-print, .btn-update, .view-header {
+            display: none !important;
         }
         body { background: white; margin: 0; padding: 0; }
         .view-container { margin: 0; width: 100%; max-width: 100%; padding: 0; }
@@ -176,7 +172,7 @@ $guardian_contact  = !empty($case['guardian_contact']) ? $case['guardian_contact
         </div>
 
         <h4 class="section-divider"><i class="fas fa-user-graduate"></i> Student Profile Information</h4>
-        
+
         <div style="display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
             <div class="info-section">
                 <div class="info-label">Program & Year</div>

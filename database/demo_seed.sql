@@ -1,0 +1,2 @@
+-- Intentionally empty: no personal records or fake users are distributed.
+-- Create the first administrator using htdocs/setup-first-admin.php after schema import.

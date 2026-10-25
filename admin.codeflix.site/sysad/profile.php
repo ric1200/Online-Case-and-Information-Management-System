@@ -6,12 +6,12 @@ require __DIR__ . '/../config/db.php';
 $user_id = isset($_GET['user_id']) ? (int)$_GET['user_id'] : ($_SESSION['user_id'] ?? 1);
 
 try {
-    $sql = "SELECT u.user_id, u.first_name, u.middle_name, u.last_name, u.email, 
-                   a.department, a.admin_level, a.phone_number, a.avatar_path 
+    $sql = "SELECT u.user_id, u.first_name, u.middle_name, u.last_name, u.email,
+                   a.department, a.admin_level, a.phone_number, a.avatar_path
             FROM users u
             LEFT JOIN admin_profiles a ON u.user_id = a.user_id
             WHERE u.user_id = :uid";
-            
+
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':uid' => $user_id]);
     $profile = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -19,7 +19,7 @@ try {
     if (!$profile) { die("User not found."); }
 
     $avatar_image = !empty($profile['avatar_path']) ? $profile['avatar_path'] : '../assets/images/default_admin.png';
-    
+
     $fullName = trim(($profile['first_name'] ?? '') . ' ' . ($profile['middle_name'] ?? '') . ' ' . ($profile['last_name'] ?? ''));
     if (empty($fullName)) { $fullName = 'Unknown Admin'; }
 
@@ -32,10 +32,10 @@ try {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Profile | UCL Counseling System</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <link rel="stylesheet" href="../assets/css/profile.css?v=<?= time(); ?>"> 
+
+    <link rel="stylesheet" href="../assets/css/profile.css?v=<?= time(); ?>">
 </head>
 <body>
 
@@ -43,7 +43,7 @@ try {
 
     <div class="main-content">
         <div class="container">
-            
+
             <div class="page-header">
                 <h1>Administrator Profile</h1>
                 <p class="subtitle">Personal information and account settings.</p>
@@ -59,7 +59,7 @@ try {
                     </div>
                     <h2 class="profile-name"><?= htmlspecialchars($fullName) ?></h2>
                     <span class="badge-role"><i class="fas fa-shield-alt"></i> <?= htmlspecialchars($profile['admin_level'] ?? 'System Admin') ?></span>
-                    
+
                     <a href="edit_profile.php?user_id=<?= $user_id ?>" class="btn-edit-profile">
                         <i class="fas fa-user-edit"></i> Edit Profile Details
                     </a>
@@ -67,7 +67,7 @@ try {
 
                 <div class="data-card">
                     <div class="section-title"><i class="fas fa-info-circle"></i> Account Information</div>
-                    
+
                     <div class="detail-item">
                         <div class="detail-icon"><i class="fas fa-envelope"></i></div>
                         <div>
