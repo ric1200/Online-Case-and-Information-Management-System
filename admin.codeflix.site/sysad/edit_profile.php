@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $stmt_users = $pdo->prepare($sql_users);
         $stmt_users->execute([':fn' => $fname, ':mn' => $mname, ':ln' => $lname, ':email' => $email, ':uid' => $user_id]);
 
-        $sql_admin = "INSERT INTO admin_profiles (user_id, department, phone_number) 
+        $sql_admin = "INSERT INTO admin_profiles (user_id, department, phone_number)
                       VALUES (:uid, :dept, :phone)
                       ON DUPLICATE KEY UPDATE department = :dept2, phone_number = :phone2";
         $stmt_admin = $pdo->prepare($sql_admin);
@@ -50,9 +50,9 @@ if (!$profile) {
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile | UCL Counseling System</title>
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <link rel="stylesheet" href="../assets/css/edit_profile.css?v=<?= time(); ?>">
 </head>
 <body>
@@ -70,7 +70,7 @@ if (!$profile) {
 
             <div class="data-card">
                 <form action="" method="POST">
-                    
+
                     <div class="section-title"><i class="fas fa-user-circle"></i> Personal Information</div>
                     <div class="form-grid">
                         <div class="form-group">

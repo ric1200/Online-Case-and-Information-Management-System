@@ -1,13 +1,9 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 /* Correct paths */
 require __DIR__ . '/../config/db.php';
 require __DIR__ . '/../config/auth_guard.php';
 require __DIR__ . '/../config/role_guard.php';
-require_once '/home/code2025/public_html/shared/config/mail_config.php';
+require_once __DIR__ . '/../../public_html/shared/config/mail_config.php';
 
 /* Validate POST data */
 if (
@@ -53,7 +49,7 @@ $stmt = $pdo->prepare("
 $stmt->execute([$user_id, $token, $expires]);
 
 /*  Build password setup link */
-$setup_link = "https://admin.codeflix.site/set_password.php?token=" . $token;
+$setup_link = "/admin//set_password.php?token=" . $token;
 
 /* Send email to user */
 $subject = "Counseling Account Password Setup";

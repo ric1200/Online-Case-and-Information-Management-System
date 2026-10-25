@@ -10,7 +10,7 @@ body {
 
 /* Adjust main content to make room for the 290px sidebar */
 .main-content {
-    margin-left: 290px; 
+    margin-left: 290px;
     padding: 30px 40px;
     min-height: 100vh;
     box-sizing: border-box;
@@ -134,7 +134,7 @@ body {
     border-collapse: collapse;
 }
 
-.table-responsive th, 
+.table-responsive th,
 .table-responsive td {
     padding: 14px 16px;
     text-align: left;

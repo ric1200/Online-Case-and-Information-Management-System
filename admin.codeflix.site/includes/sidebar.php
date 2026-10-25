@@ -16,15 +16,15 @@ $current_page = basename($_SERVER['PHP_SELF']);
       <a href="/sysad/dashboard.php" class="<?= ($current_page == 'dashboard.php') ? 'active' : '' ?>">
           <i class="fas fa-border-all"></i> Dashboard
       </a>
-      
+
       <a href="/sysad/manage_users.php" class="<?= ($current_page == 'manage_users.php' || $current_page == 'user_form.php') ? 'active' : '' ?>">
           <i class="far fa-user"></i> Manage Users
       </a>
-      
+
       <a href="/sysad/audit_logs.php" class="<?= ($current_page == 'audit_logs.php') ? 'active' : '' ?>">
           <i class="fas fa-history"></i> Audit Logs
       </a>
-      
+
       <a href="/sysad/profile.php" class="<?= ($current_page == 'profile.php') ? 'active' : '' ?>">
           <i class="fas fa-cog"></i> Profile
       </a>

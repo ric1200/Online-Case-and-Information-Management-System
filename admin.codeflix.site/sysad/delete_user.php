@@ -21,7 +21,7 @@ if (isset($_GET['id'])) {
             // 3. Log the action
             if (function_exists('insertAudit')) {
                 insertAudit(
-                    $pdo, 
+                    $pdo,
                     'USER_DEACTIVATED', // Action Name
                     'users',            // Table
                     $id,                // Object ID
@@ -29,8 +29,8 @@ if (isset($_GET['id'])) {
                         'previous_status' => $targetUser['status'],
                         'new_status' => 'INACTIVE',
                         'username' => $targetUser['username']
-                    ], 
-                    $updateSql, 
+                    ],
+                    $updateSql,
                     $_SESSION['user_id'] ?? 0
                 );
             }

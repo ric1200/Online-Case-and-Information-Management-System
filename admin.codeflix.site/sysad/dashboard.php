@@ -1,9 +1,5 @@
 <?php
 require_once __DIR__ . '/../config/auth_guard.php';
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 // 1. Connect to Database
 require __DIR__ . '/../config/db.php';
 
@@ -17,10 +13,10 @@ $roleCounts = $stmt->fetchAll(PDO::FETCH_KEY_PAIR);
 
 // 4. Fetch Recent Audit Logs (Last 5 actions)
 $logStmt = $pdo->query("
-    SELECT a.*, u.username 
-    FROM audit_logs a 
-    LEFT JOIN users u ON a.user_id = u.user_id 
-    ORDER BY a.created_at DESC 
+    SELECT a.*, u.username
+    FROM audit_logs a
+    LEFT JOIN users u ON a.user_id = u.user_id
+    ORDER BY a.created_at DESC
     LIMIT 5
 ");
 $recentLogs = $logStmt->fetchAll(PDO::FETCH_ASSOC);
@@ -32,16 +28,16 @@ $recentLogs = $logStmt->fetchAll(PDO::FETCH_ASSOC);
   <meta charset="UTF-8">
   <title>Admin Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
+
   <link rel="stylesheet" href="../assets/css/dashboard.css?v=<?php echo time(); ?>">
 </head>
 <body>
-  
+
   <?php include __DIR__ . '/../includes/sidebar.php'; ?>
-  
+
   <div class="main-content">
     <div class="container">
-        
+
         <div class="header">
           <h1>System Administrator Dashboard</h1>
           <p>Welcome back, Administrator</p>
@@ -68,7 +64,7 @@ $recentLogs = $logStmt->fetchAll(PDO::FETCH_ASSOC);
                 <p>Students</p>
             </div>
           </div>
-          
+
           <div class="stat-card danger">
             <div class="stat-content">
                 <h3><?= $roleCounts['COUNSELOR'] ?? 0 ?></h3>
@@ -102,7 +98,7 @@ $recentLogs = $logStmt->fetchAll(PDO::FETCH_ASSOC);
                                 <td><?= date('M d, H:i', strtotime($log['created_at'])) ?></td>
                                 <td><strong><?= htmlspecialchars($log['username'] ?? 'System') ?></strong></td>
                                 <td>
-                                    <?php 
+                                    <?php
                                         $badge = 'badge-info';
                                         if(strpos($log['action'], 'DELETE') !== false) $badge = 'badge-danger';
                                         if(strpos($log['action'], 'CREATE') !== false) $badge = 'badge-success';

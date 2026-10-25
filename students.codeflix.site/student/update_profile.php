@@ -85,7 +85,7 @@ if ($hasProfile) {
     $stmt->execute();
     $stmt->close();
 } else {
-    $sql = "INSERT INTO student_profiles 
+    $sql = "INSERT INTO student_profiles
             (user_id, program, year_level, phone_number, address, city, zip_code, religion,
              birth_date, gender, guardian_name, guardian_contact, avatar_path, updated_at)
             VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, NOW())";

@@ -1,0 +1,10 @@
+# Do not track source archives containing production-like records or local configuration.
+MARCH 29 FULLCODE.zip
+htdocs/_private/config.php
+*.log
+error_log
+# Ignore uploaded user files while keeping the deny-all access-control files.
+htdocs/*/uploads/*
+!htdocs/*/uploads/*/
+htdocs/*/uploads/*/*
+!htdocs/*/uploads/*/.htaccess

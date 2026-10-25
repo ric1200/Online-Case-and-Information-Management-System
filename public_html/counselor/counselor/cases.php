@@ -1,17 +1,13 @@
-<?php  
+<?php
 require_once __DIR__ . '/../config/counselor_auth_guard.php';
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
-require_once __DIR__ . '/../config/db.php'; 
-include __DIR__ . '/../includes/header.php'; 
+require_once __DIR__ . '/../config/db.php';
+include __DIR__ . '/../includes/header.php';
 
 // --- SEARCH & PAGINATION SETUP ---
 $search = $_GET['search'] ?? '';
 $filter_priority = $_GET['priority'] ?? '';
 $filter_status = $_GET['status'] ?? '';
-$filter_month = $_GET['month'] ?? ''; 
+$filter_month = $_GET['month'] ?? '';
 
 $page = isset($_GET['page']) && is_numeric($_GET['page']) ? (int)$_GET['page'] : 1;
 $limit = 10;
@@ -53,13 +49,13 @@ if (count($whereConditions) > 0) {
 // --- GET TOTAL ROWS FOR PAGINATION ---
 try {
     // Idinagdag ang LEFT JOIN para sa student_profiles
-    $countQuery = "SELECT COUNT(DISTINCT c.case_id) 
-                   FROM cases c 
-                   LEFT JOIN users u ON c.student_user_id = u.username OR c.student_user_id = u.user_id 
+    $countQuery = "SELECT COUNT(DISTINCT c.case_id)
+                   FROM cases c
+                   LEFT JOIN users u ON c.student_user_id = u.username OR c.student_user_id = u.user_id
                    LEFT JOIN student_profiles sp ON c.student_user_id = sp.user_id
                    $whereClause";
     $countStmt = $pdo->prepare($countQuery);
-    
+
     // Auto-bind parameters for counting
     foreach ($params as $key => $val) {
         $countStmt->bindValue(':' . $key, $val, PDO::PARAM_STR);
@@ -73,13 +69,13 @@ try {
 }
 
 $queryParams = $_GET;
-unset($queryParams['page']); 
+unset($queryParams['page']);
 $queryString = http_build_query($queryParams);
-$searchQuery = !empty($queryString) ? '&' . $queryString : ''; 
+$searchQuery = !empty($queryString) ? '&' . $queryString : '';
 ?>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<link rel="stylesheet" href="https://codeflix.site/counselor/assets/css/cases.css">
+<link rel="stylesheet" href="/counselor//assets/css/cases.css">
 <style>
     .controls-container { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; flex-wrap: wrap; gap: 15px; }
     .filter-group { display: flex; flex-wrap: wrap; gap: 10px; flex-grow: 1; align-items: center;}
@@ -94,7 +90,7 @@ $searchQuery = !empty($queryString) ? '&' . $queryString : '';
     .page-link { padding: 8px 12px; border: 1px solid #ddd; border-radius: 4px; text-decoration: none; color: #333; transition: 0.3s; }
     .page-link:hover { background: #f0f0f0; }
     .page-link.active { background: #4267b2; color: white; border-color: #4267b2; pointer-events: none; }
-    
+
     /* FIX PARA SA VIEW DETAILS BUTTON */
     .btn-sm { white-space: nowrap; display: inline-block; }
     .data-table th:last-child, .data-table td:last-child { white-space: nowrap; }
@@ -108,20 +104,20 @@ $searchQuery = !empty($queryString) ? '&' . $queryString : '';
         header, nav, .navbar, footer, .controls-container, .header-title p, .pagination, .hide-on-print { display: none !important; }
         body { background: white; margin: 0; padding: 0; }
         .content-section, .card { box-shadow: none; margin: 0; border: none; width: 100%; max-width: 100%; padding: 0; }
-        
-        .data-table { 
-            border-collapse: collapse; 
-            width: 100%; 
+
+        .data-table {
+            border-collapse: collapse;
+            width: 100%;
             table-layout: fixed; /* Pinipigilan ang table na mag-stretch lagpas ng 100% */
         }
-        .data-table th, .data-table td { 
-            border: 1px solid #000; 
+        .data-table th, .data-table td {
+            border: 1px solid #000;
             padding: 5px; /* Pinaliit na padding para maka-save ng space */
             font-size: 10px; /* Pinaliit na font size para magkasya lahat */
             word-wrap: break-word; /* Pipilitin na bumaba ang text kung masyadong mahaba */
             overflow-wrap: break-word;
         }
-        
+
         /* Optional: Pwedeng paliitin ang width ng specific columns kung kailangan */
         .data-table th:nth-child(1), .data-table td:nth-child(1) { width: 8%; } /* Case ID */
         .data-table th:nth-child(2), .data-table td:nth-child(2) { width: 10%; } /* System User ID */
@@ -140,7 +136,7 @@ $searchQuery = !empty($queryString) ? '&' . $queryString : '';
         <div class="controls-container">
             <form method="GET" class="filter-group">
                 <input type="text" name="search" class="search-input text-search" placeholder="Search name or ID..." value="<?= htmlspecialchars($search) ?>">
-                
+
                 <select name="priority" class="search-input">
                     <option value="">All Priorities</option>
                     <option value="Low" <?= $filter_priority === 'Low' ? 'selected' : '' ?>>Low</option>
@@ -195,21 +191,21 @@ $searchQuery = !empty($queryString) ? '&' . $queryString : '';
                                   LEFT JOIN users u ON c.student_user_id = u.username OR c.student_user_id = u.user_id
                                   LEFT JOIN student_profiles sp ON c.student_user_id = sp.user_id
                                   $whereClause
-                                  GROUP BY c.case_id 
+                                  GROUP BY c.case_id
                                   ORDER BY c.created_at DESC
                                   LIMIT :limit OFFSET :offset";
-                        
+
                         $stmt = $pdo->prepare($query);
-                        
+
                         // Bind search/filter parameters
                         foreach ($params as $key => $val) {
                             $stmt->bindValue(':' . $key, $val, PDO::PARAM_STR);
                         }
-                        
+
                         // Bind pagination (must be INT)
                         $stmt->bindValue(':limit', (int)$limit, PDO::PARAM_INT);
                         $stmt->bindValue(':offset', (int)$offset, PDO::PARAM_INT);
-                        
+
                         $stmt->execute();
                         $cases = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
@@ -218,9 +214,9 @@ $searchQuery = !empty($queryString) ? '&' . $queryString : '';
                                 $case_id       = $row['case_id'] ?? 'N/A';
                                 $system_id     = $row['student_user_id'] ?? 'N/A'; // Yung ID na nasa cases table
                                 $actual_student_id = $row['profile_student_id'] ?? 'N/A'; // Yung ID galing student_profiles
-                                
-                                $student_name  = (!empty($row['first_name']) || !empty($row['last_name'])) 
-                                                 ? $row['first_name'] . ' ' . $row['last_name'] 
+
+                                $student_name  = (!empty($row['first_name']) || !empty($row['last_name']))
+                                                 ? $row['first_name'] . ' ' . $row['last_name']
                                                  : 'N/A';
                                 $title         = $row['title'] ?? 'N/A';
                                 $priority      = $row['priority'] ?? 'Low';

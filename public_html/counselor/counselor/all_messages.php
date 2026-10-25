@@ -1,17 +1,13 @@
-<?php 
+<?php
 require_once __DIR__ . '/../config/counselor_auth_guard.php';
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/../config/db.php'; 
-include __DIR__ . '/../includes/header.php'; 
+require_once __DIR__ . '/../config/db.php';
+include __DIR__ . '/../includes/header.php';
 
-$counselor_id = $_SESSION['user_id'] ?? null; 
+$counselor_id = $_SESSION['user_id'] ?? null;
 $db = isset($pdo) ? $pdo : $conn;
 
 if (!$counselor_id) {
@@ -30,36 +26,36 @@ $agenda_filter = $_GET['agenda'] ?? '';
     .header-title p { color: #8c92a0; margin: 5px 0 0 0; }
     .btn-back { background: #f0f2f5; color: #333; padding: 10px 15px; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 0.9rem; transition: 0.2s; }
     .btn-back:hover { background: #e4e6e9; }
-    
+
     .inbox-container { background: #fff; border-radius: 15px; box-shadow: 0 4px 20px rgba(0,0,0,0.08); border: 1px solid #eef2f7; overflow: hidden; }
-    
+
     .filter-bar { background: #fafbfc; padding: 15px 20px; border-bottom: 1px solid #eef2f7; display: flex; justify-content: space-between; align-items: center; }
     .filter-form { display: flex; gap: 10px; align-items: center; }
     .form-select { padding: 10px; border: 1px solid #ddd; border-radius: 8px; font-family: inherit; font-size: 0.9rem; outline: none; min-width: 200px; }
     .btn-filter { background: #4267b2; color: white; border: none; padding: 10px 15px; border-radius: 8px; font-weight: 600; cursor: pointer; font-size: 0.9rem; }
-    
+
     .msg-list { display: flex; flex-direction: column; }
     .msg-row { display: flex; align-items: center; padding: 20px; border-bottom: 1px solid #eef2f7; text-decoration: none; color: inherit; transition: all 0.2s; }
     .msg-row:last-child { border-bottom: none; }
     .msg-row:hover { background: #fcfdfe; }
-    
+
     /* Styling para sa UNREAD messages */
     .msg-row.unread { background: #f4f7fb; border-left: 4px solid #4267b2; }
     .msg-row.unread .msg-name, .msg-row.unread .msg-content-text { font-weight: 700; color: #111; }
-    
+
     .msg-details { flex-grow: 1; overflow: hidden; }
     .msg-header { display: flex; align-items: center; gap: 10px; margin-bottom: 6px; }
     .msg-name { font-size: 1.05rem; color: #444; margin: 0; }
     .badge { padding: 4px 10px; border-radius: 20px; font-size: 0.75rem; font-weight: 600; background: #eaf0f9; color: #4267b2; white-space: nowrap; }
-    
+
     .msg-content-text { font-size: 0.9rem; color: #666; margin: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 90%; }
-    
+
     .msg-meta { text-align: right; min-width: 120px; }
     .msg-date { font-size: 0.8rem; color: #888; font-weight: 500; }
     .msg-status { font-size: 0.75rem; margin-top: 5px; text-transform: uppercase; font-weight: 700; }
     .status-unread { color: #d93025; }
     .status-read { color: #1e8e3e; }
-    
+
     .empty-state { text-align: center; padding: 50px 20px; color: #888; }
 </style>
 
@@ -92,11 +88,11 @@ $agenda_filter = $_GET['agenda'] ?? '';
             <?php
             try {
                 // Base SQL Query
-                $sql = "SELECT m.*, u.first_name, u.last_name 
-                        FROM messages m 
-                        JOIN users u ON m.sender_id = u.user_id 
+                $sql = "SELECT m.*, u.first_name, u.last_name
+                        FROM messages m
+                        JOIN users u ON m.sender_id = u.user_id
                         WHERE m.recipient_id = :counselor_id";
-                
+
                 $params = [':counselor_id' => $counselor_id];
 
                 // Idagdag ang condition kung may piniling filter
@@ -118,9 +114,9 @@ $agenda_filter = $_GET['agenda'] ?? '';
                         $agenda = !empty($msg['agenda']) ? htmlspecialchars($msg['agenda']) : 'No Agenda';
                         $content = htmlspecialchars($msg['content']);
                         $date = date("M d, Y h:i A", strtotime($msg['created_at']));
-                        
+
                         // I-check ang status kung unread o read (Assuming may 'status' column ka base sa image mo kanina)
-                        $status = strtolower($msg['status'] ?? 'unread'); 
+                        $status = strtolower($msg['status'] ?? 'unread');
                         $is_unread_class = ($status === 'unread') ? 'unread' : '';
                         $status_label_class = ($status === 'unread') ? 'status-unread' : 'status-read';
 

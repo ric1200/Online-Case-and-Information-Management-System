@@ -1,0 +1,208 @@
+/* 1. Global Reset */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background:
+        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
+        url("/assets/image/images.jpg") no-repeat center center;
+    background-size: cover;
+}
+
+/* 2. Main Card Container */
+.login-card {
+    display: flex;
+    width: 950px;
+    height: 600px;
+    background: #ffffff;
+    border-radius: 40px; /* Malaking rounded corners gaya ng sa image */
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+}
+
+/* 3. Left Section Styles */
+.left-section {
+    flex: 1;
+    background-color: #e8f0fe; /* Light blue tint */
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center;
+}
+
+.brand-content h1 {
+    color: #1a237e;
+    font-size: 26px;
+    margin-bottom: 8px;
+}
+
+.brand-content p {
+    font-size: 14px;
+    color: #555;
+    font-weight: 500;
+}
+
+.illustration-box {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 120px; /* Para sa fallback icon */
+}
+
+/* 4. Right Section Styles */
+.right-section {
+    flex: 1;
+    padding: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.form-container {
+    width: 100%;
+}
+
+.right-section h2 {
+    font-size: 28px;
+    color: #1a237e;
+    margin-bottom: 8px;
+}
+
+.subtitle {
+    font-size: 13px;
+    color: #777;
+    margin-bottom: 30px;
+}
+
+/* 5. Input & Form Elements */
+.input-group {
+    margin-bottom: 20px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    background: #fafafa;
+    font-size: 14px;
+    outline: none;
+    transition: 0.3s;
+}
+
+.input-group input:focus {
+    border-color: #1a237e;
+    background: #fff;
+}
+
+.forgot-link {
+    text-align: right;
+    margin-top: 8px;
+}
+
+.forgot-link a {
+    font-size: 12px;
+    color: #666;
+    text-decoration: none;
+}
+
+.login-btn {
+    width: 100%;
+    padding: 14px;
+    background-color: #283593; /* Dark blue button */
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: 0.3s;
+}
+
+.login-btn:hover {
+    background-color: #1a237e;
+    transform: translateY(-1px);
+}
+
+/* 6. Social Login & Footer */
+.social-login {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.social-login p {
+    font-size: 12px;
+    color: #999;
+    margin-bottom: 15px;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+}
+
+.social-btn {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #eee;
+    background: white;
+    border-radius: 8px;
+    font-size: 13px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    cursor: pointer;
+}
+
+.signup-text {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 13px;
+    color: #777;
+}
+
+.signup-text a {
+    color: #283593;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+/* 7. Floating Back Button */
+.back-button {
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    padding: 10px 20px;
+    background: #fff;
+    border: none;
+    border-radius: 50px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    cursor: pointer;
+    font-weight: 500;
+}
+
+/* 8. Mobile Responsiveness */
+@media (max-width: 900px) {
+    .login-card {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+        margin: 40px 0;
+    }
+    .left-section {
+        padding: 40px 20px;
+    }
+}

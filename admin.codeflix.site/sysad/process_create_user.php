@@ -34,7 +34,7 @@ $stmt = $pdo->prepare("
 $stmt->execute([$user_id, $token, $expires]);
 
 /* Build setup link */
-$setup_link = "https://admin.codeflix.site/set_password.php?token=" . $token;
+$setup_link = "/admin//set_password.php?token=" . $token;
 
 /*  Redirect */
 header('Location: users.php?created=1');

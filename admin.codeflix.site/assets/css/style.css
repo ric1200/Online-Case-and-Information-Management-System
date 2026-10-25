@@ -129,7 +129,7 @@ input[type="password"] {
   border-radius: 8px;
   font-size: 14px;
   outline: none;
-  box-sizing: border-box; 
+  box-sizing: border-box;
   transition: border 0.3s, box-shadow 0.3s;
 }
 
@@ -204,7 +204,7 @@ input[type="password"]:focus {
   .right-section {
     padding: 40px 30px;
   }
-  
+
   .back-btn {
     top: 20px;
     left: 20px;

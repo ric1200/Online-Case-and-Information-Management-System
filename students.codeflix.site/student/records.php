@@ -17,7 +17,7 @@ if (!isset($conn) || !($conn instanceof mysqli)) {
 // Kunin ang lahat ng cases ng naka-login na student
 $cases = [];
 $stmt = $conn->prepare("
-    SELECT c.*, u.first_name, u.last_name 
+    SELECT c.*, u.first_name, u.last_name
     FROM cases c
     LEFT JOIN users u ON c.counselor_id = u.user_id
     WHERE c.student_user_id = ?
@@ -41,7 +41,7 @@ if ($stmt) {
   <title>Counseling Records</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <link rel="stylesheet" href="/assets/css/student-dashboard.css" />
-  
+
   <style>
     .custom-modal-overlay {
       display: none;
@@ -166,7 +166,7 @@ if ($stmt) {
               </div>
             <?php else: ?>
               <ul class="item-list">
-                <?php foreach ($cases as $case): 
+                <?php foreach ($cases as $case):
                     $date_opened = date("M d, Y", strtotime($case['created_at']));
                     $counselor_name = !empty($case['first_name']) ? $case['first_name'] . ' ' . $case['last_name'] : "Counselor";
                     $status = ucfirst($case['status'] ?: 'Unknown');

@@ -3,12 +3,12 @@ session_start();
 require __DIR__ . '/config/db.php';
 if (isset($_SESSION['user_id'])) {
     insertAudit(
-        $pdo, 
-        'LOGOUT', 
-        'users', 
-        $_SESSION['user_id'], 
-        null, 
-        null, 
+        $pdo,
+        'LOGOUT',
+        'users',
+        $_SESSION['user_id'],
+        null,
+        null,
         $_SESSION['user_id']
     );
 }

@@ -4,9 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>UCL Counseling Portal</title>
-  
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  
+
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
   <style>
@@ -46,7 +46,7 @@
       width: 100%;
       height: 100%;
       /* Update this path to your actual image location */
-      background: url("assets/image/bg_img.jpg") no-repeat center center; 
+      background: url("assets/image/bg_img.jpg") no-repeat center center;
       background-size: cover;
       z-index: -2;
     }
@@ -67,7 +67,7 @@
       justify-content: space-between;
       align-items: center;
       padding: 15px 40px;
-      background: linear-gradient(90deg, #006064, #1a237e); 
+      background: linear-gradient(90deg, #006064, #1a237e);
       box-shadow: 0 4px 10px rgba(0,0,0,0.3);
     }
 
@@ -80,7 +80,7 @@
     }
 
     .nav-brand img {
-      height: 50px; 
+      height: 50px;
       width: auto;
     }
 
@@ -136,7 +136,7 @@
       flex-direction: column;
       margin-bottom: 50px;
       position: relative;
-      border-left: 8px solid var(--blue-accent); 
+      border-left: 8px solid var(--blue-accent);
       box-shadow: 0 10px 25px rgba(0,0,0,0.2);
     }
 
@@ -238,7 +238,7 @@
 
   <header class="navbar">
     <div class="nav-brand">
-      <img src="assets/image/union_logo1.png" alt="Phinma Logo"> 
+      <img src="assets/image/union_logo1.png" alt="Phinma Logo">
       <span>UCL Counseling Office</span>
     </div>
   </header>
@@ -262,7 +262,7 @@
 
     <h2 class="section-header">System Portals</h2>
     <div class="portals-grid">
-       
+
       <div class="portal-card" onclick="goTo('admin')">
         <div class="card-icon"><i class="fa-solid fa-screwdriver-wrench"></i></div>
         <h4>Admin Portal</h4>
@@ -286,7 +286,7 @@
         <h4>Analytics & Reports</h4>
         <p>View system statistics, counseling trends, and generate summaries.</p>
       </div>
-       
+
     </div>
 
   </div>
@@ -298,10 +298,10 @@
   <script>
     function goTo(subdomain) {
       const urls = {
-        'students': 'https://students.codeflix.site',
-        'counselor': 'https://codeflix.site/counselor',
-        'reports': 'https://reports.codeflix.site',
-        'admin': 'https://admin.codeflix.site'
+        'students': '/students/',
+        'counselor': '/counselor/',
+        'reports': '/reports/',
+        'admin': '/admin/'
       };
       if (urls[subdomain]) window.location.href = urls[subdomain];
     }

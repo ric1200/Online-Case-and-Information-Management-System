@@ -1,8 +1,4 @@
 <?php
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 session_start();
 require __DIR__ . '/config/db.php';
 
@@ -24,7 +20,7 @@ $stmt = $pdo->prepare("
     FROM users
     WHERE username = ?
       AND division = 'COUNSELOR'
-      AND role != 'ADMIN' 
+      AND role != 'ADMIN'
       AND status = 'ACTIVE'
     LIMIT 1
 ");

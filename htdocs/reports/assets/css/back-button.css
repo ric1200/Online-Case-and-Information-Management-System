@@ -1,0 +1,23 @@
+/* Back button style */
+.back-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-weight: bold;
+  color: #111111; /* maitim */
+  background-color: #93c5fd; /* light blue */
+  border: 1px solid #60a5fa;
+  border-radius: 6px;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 6px 12px;
+  margin: 16px;
+  transition: background-color 0.2s;
+}
+.back-button:hover {
+  background-color: #60a5fa; /* darker blue on hover */
+}
+.back-button .arrow {
+  font-weight: bold;
+  font-size: 18px;
+}

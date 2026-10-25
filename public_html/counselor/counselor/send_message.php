@@ -1,15 +1,11 @@
 <?php
 require_once __DIR__ . '/../config/counselor_auth_guard.php';
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
 // I-connect ang database
-require_once __DIR__ . '/../config/db.php'; 
+require_once __DIR__ . '/../config/db.php';
 
 // Siguraduhing may naka-login na counselor
 $counselor_id = $_SESSION['user_id'] ?? null;
@@ -28,9 +24,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         try {
             // I-save ang message sa database
             // Naglagay tayo ng default subject na 'Counselor Reply'
-            $sql = "INSERT INTO messages (sender_id, recipient_id, subject, agenda, content, status) 
+            $sql = "INSERT INTO messages (sender_id, recipient_id, subject, agenda, content, status)
                     VALUES (:sender, :recipient, 'Counselor Reply', 'General Inquiry', :content, 'Unread')";
-            
+
             $stmt = $pdo->prepare($sql);
             $stmt->execute([
                 ':sender'    => $counselor_id,

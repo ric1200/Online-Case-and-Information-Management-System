@@ -13,9 +13,9 @@ $params = [];
 
 // 1. Text Search Condition
 if (!empty($search)) {
-    $whereClauses[] = "(first_name LIKE :s1 
-                        OR last_name LIKE :s2 
-                        OR email LIKE :s3 
+    $whereClauses[] = "(first_name LIKE :s1
+                        OR last_name LIKE :s2
+                        OR email LIKE :s3
                         OR username LIKE :s4)";
     $term = "%$search%";
     $params[':s1'] = $term;
@@ -43,7 +43,7 @@ if (count($whereClauses) > 0) {
 }
 
 // --- PAGINATION LOGIC ---
-$limit = 10; 
+$limit = 10;
 $page = isset($_GET['page']) ? (int)$_GET['page'] : 1;
 if ($page < 1) $page = 1;
 $offset = ($page - 1) * $limit;
@@ -52,7 +52,7 @@ try {
     // 1. Get Total Count
     $sqlCount = "SELECT COUNT(*) FROM users $searchCondition";
     $countStmt = $pdo->prepare($sqlCount);
-    $countStmt->execute($params); 
+    $countStmt->execute($params);
     $totalRecords = $countStmt->fetchColumn();
     $totalPages = ceil($totalRecords / $limit);
 
@@ -85,7 +85,7 @@ $queryString = "&search=" . urlencode($search) . "&role=" . urlencode($roleFilte
     <meta charset="UTF-8">
     <title>Manage Users | Admin</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <link rel="stylesheet" href="../assets/css/manage_users.css?v=<?php echo time(); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -95,7 +95,7 @@ $queryString = "&search=" . urlencode($search) . "&role=" . urlencode($roleFilte
 
 <div class="main-content">
     <div class="container">
-        
+
         <div class="page-header">
             <h1>Manage Users</h1>
             <p>View, search, filter, and manage system accounts.</p>
@@ -104,11 +104,11 @@ $queryString = "&search=" . urlencode($search) . "&role=" . urlencode($roleFilte
         <div class="data-card">
             <div class="top-controls">
                 <form method="GET" action="" class="search-form">
-                    
+
                     <div class="search-wrapper">
                         <i class="fas fa-search search-icon"></i>
-                        <input type="text" name="search" class="search-input search-text" 
-                               placeholder="Search name, email, or username..." 
+                        <input type="text" name="search" class="search-input search-text"
+                               placeholder="Search name, email, or username..."
                                value="<?= htmlspecialchars($search) ?>">
                     </div>
 
@@ -127,7 +127,7 @@ $queryString = "&search=" . urlencode($search) . "&role=" . urlencode($roleFilte
                     </select>
 
                     <button type="submit" class="btn btn-search"><i class="fas fa-filter"></i> Filter</button>
-                    
+
                     <?php if(!empty($search) || !empty($roleFilter) || !empty($divisionFilter)): ?>
                         <a href="manage_users.php" class="btn btn-reset"><i class="fas fa-undo"></i> Reset</a>
                     <?php endif; ?>
@@ -135,7 +135,7 @@ $queryString = "&search=" . urlencode($search) . "&role=" . urlencode($roleFilte
 
                 <a href="user_form.php" class="btn btn-add"><i class="fas fa-plus"></i> Add New User</a>
             </div>
-            
+
             <div class="table-responsive">
                 <table>
                     <thead>
@@ -181,7 +181,7 @@ $queryString = "&search=" . urlencode($search) . "&role=" . urlencode($roleFilte
                                         <i class="fas fa-edit"></i> Edit
                                     </a>
                                     <?php if($user['status'] == 'ACTIVE'): ?>
-                                        <a href="delete_user.php?id=<?= $user['user_id'] ?>" 
+                                        <a href="delete_user.php?id=<?= $user['user_id'] ?>"
                                            class="action-btn btn-delete"
                                            onclick="return confirm('Are you sure you want to deactivate this user?');" title="Deactivate">
                                             <i class="fas fa-ban"></i> Deactivate
@@ -197,14 +197,14 @@ $queryString = "&search=" . urlencode($search) . "&role=" . urlencode($roleFilte
 
             <?php if ($totalPages > 1): ?>
             <div class="pagination">
-                <a href="?page=<?= $page - 1 ?><?= $queryString ?>" 
+                <a href="?page=<?= $page - 1 ?><?= $queryString ?>"
                    class="page-btn <?= ($page <= 1) ? 'disabled' : '' ?>">
                     <i class="fas fa-chevron-left"></i> Prev
                 </a>
-                
+
                 <span class="page-info">Page <strong><?= $page ?></strong> of <strong><?= $totalPages ?></strong></span>
-                
-                <a href="?page=<?= $page + 1 ?><?= $queryString ?>" 
+
+                <a href="?page=<?= $page + 1 ?><?= $queryString ?>"
                    class="page-btn <?= ($page >= $totalPages) ? 'disabled' : '' ?>">
                     Next <i class="fas fa-chevron-right"></i>
                 </a>

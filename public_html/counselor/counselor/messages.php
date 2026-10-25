@@ -1,17 +1,13 @@
-<?php 
+<?php
 require_once __DIR__ . '/../config/counselor_auth_guard.php';
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-require_once __DIR__ . '/../config/db.php'; 
-include __DIR__ . '/../includes/header.php'; 
+require_once __DIR__ . '/../config/db.php';
+include __DIR__ . '/../includes/header.php';
 
-$counselor_id = $_SESSION['user_id'] ?? null; 
+$counselor_id = $_SESSION['user_id'] ?? null;
 $db = isset($pdo) ? $pdo : $conn;
 
 if (!$counselor_id) {
@@ -68,7 +64,7 @@ if ($is_broadcast) {
     .btn-primary { background: #4267b2; color: white; border: none; padding: 12px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; }
     .btn-send { border-radius: 50%; width: 45px; height: 45px; padding: 0; display: flex; align-items: center; justify-content: center; }
     .time-divider { text-align: center; font-size: 0.75rem; color: #8c92a0; margin: 10px 0; font-weight: 500; }
-    
+
     /* BAGONG CSS PARA SA BROADCAST BUTTON */
     .broadcast-item { background: #fff8e1; border-left: 4px solid #f39c12; }
     .broadcast-item:hover { background: #ffecb3; }
@@ -96,12 +92,12 @@ if ($is_broadcast) {
                 // EXISTING CODE: Normal Inbox
                 try {
                     $inbox_sql = "SELECT m.*, u.first_name, u.last_name FROM messages m
-                                  INNER JOIN (SELECT sender_id, MAX(created_at) AS MaxTime FROM messages WHERE recipient_id = :c_id1 GROUP BY sender_id) 
+                                  INNER JOIN (SELECT sender_id, MAX(created_at) AS MaxTime FROM messages WHERE recipient_id = :c_id1 GROUP BY sender_id)
                                   grouped_m ON m.sender_id = grouped_m.sender_id AND m.created_at = grouped_m.MaxTime
                                   JOIN users u ON m.sender_id = u.user_id WHERE m.recipient_id = :c_id2 ORDER BY m.created_at DESC";
                     $inboxStmt = $db->prepare($inbox_sql);
                     $inboxStmt->execute([':c_id1' => $counselor_id, ':c_id2' => $counselor_id]);
-                    
+
                     while ($msg = $inboxStmt->fetch()) {
                         $is_active = ($active_student_id == $msg['sender_id']) ? 'active' : '';
                         $full_name = $msg['first_name'] . ' ' . $msg['last_name'];
@@ -137,7 +133,7 @@ if ($is_broadcast) {
                     <form method="POST" action="send_broadcast.php">
                         <label style="font-size:0.85rem; font-weight:bold; color:#333;">Subject / Title</label>
                         <input type="text" name="subject" class="form-control" placeholder="E.g., Reminders for Prelim Exams" required style="margin-bottom: 15px;">
-                        
+
                         <div style="display: flex; gap: 15px; margin-bottom: 15px;">
                             <div style="flex: 1;">
                                 <label style="font-size:0.85rem; font-weight:bold; color:#333;">Start Date</label>
@@ -148,10 +144,10 @@ if ($is_broadcast) {
                                 <input type="date" name="end_date" class="form-control" required>
                             </div>
                         </div>
-                        
+
                         <label style="font-size:0.85rem; font-weight:bold; color:#333;">Announcement Message</label>
                         <textarea name="message" class="form-control" rows="10" placeholder="Write your announcement details here..." required style="resize:none; padding: 15px;"></textarea>
-                        
+
                         <div style="margin-top: 15px; text-align: right;">
                             <button type="submit" class="btn-primary" style="width: auto; padding: 12px 30px; background: #d35400; font-size: 1rem;">Send to All Students ➔</button>
                         </div>
@@ -164,19 +160,19 @@ if ($is_broadcast) {
                     <?php
                     $chatStmt = $db->prepare("SELECT * FROM messages WHERE (sender_id = ? AND recipient_id = ?) OR (sender_id = ? AND recipient_id = ?) ORDER BY created_at ASC");
                     $chatStmt->execute([$counselor_id, $active_student_id, $active_student_id, $counselor_id]);
-                    
-                    $last_time = null; 
-                    
+
+                    $last_time = null;
+
                     while($chat = $chatStmt->fetch()) {
                         $side = ($chat['sender_id'] == $counselor_id) ? 'sent' : 'received';
                         $current_time = strtotime($chat['created_at']);
-                        
+
                         if ($last_time === null || ($current_time - $last_time) > 1800) {
-                            $formatted_time = date('D g:i A', $current_time); 
+                            $formatted_time = date('D g:i A', $current_time);
                             echo "<div class='time-divider'>{$formatted_time}</div>";
                         }
                         $last_time = $current_time;
-                        
+
                         $exact_time = date('M d, Y g:i A', $current_time);
                         echo "<div class='chat-bubble {$side}' title='{$exact_time}'>".htmlspecialchars($chat['content'])."</div>";
                     }
@@ -199,7 +195,7 @@ if ($is_broadcast) {
             <?php if(isset($_GET['sched'])): ?>
                 <div style="background:#eafaf1; color:#2ecc71; padding:10px; border-radius:8px; margin-bottom:10px;">✔ Saved!</div>
             <?php endif; ?>
-            
+
             <form action="set_schedule.php" method="POST">
                 <label style="font-size:0.75rem; font-weight:bold;">STUDENT</label>
                 <input type="text" class="form-control" value="<?= htmlspecialchars($active_student_name) ?>" readonly style="background:#f8f9fa;">

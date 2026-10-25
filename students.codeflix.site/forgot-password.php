@@ -1,10 +1,5 @@
 <?php
 declare(strict_types=1);
-
-ini_set('display_errors', 1);
-ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-
 session_start();
 
 require_once __DIR__ . '/config/db.php';
@@ -46,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 'expires_at' => $expires
             ]);
 
-            $link = "https://admin.codeflix.site/set-password.php?token=" . urlencode($token);
+            $link = "/admin//set-password.php?token=" . urlencode($token);
 
             $subject = "Counseling Office Reset Request";
 
@@ -206,7 +201,7 @@ body {
             <button type="submit">Send Reset Link</button>
         </form>
     <?php endif; ?>
-    
+
     <a href="/index.php">Return to Login</a>
 
 </div>
